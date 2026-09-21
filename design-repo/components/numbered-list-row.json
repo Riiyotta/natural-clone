@@ -1,0 +1,14 @@
+{
+  "id": "numbered-list-row",
+  "layer": "component",
+  "name": "Numbered principle row",
+  "purpose": "A three-part editorial row — an index + headline on the left, a hairline rule, a description on the right. Shared verbatim by /about 'Opportunity' and /careers 'Values'.",
+  "content": {
+    "number":   { "type": "string", "required": true, "maxWords": 1 },
+    "headline": { "type": "string", "required": true, "maxWords": 10 },
+    "description": { "type": "string", "required": true, "maxWords": 35 }
+  },
+  "style": { "leftColumn": "320px", "rule": "1px x 320px, border.field, desktop only", "rightColumn": "320px", "columnGap": "space.120", "rowGap": "space.40", "type": "type.body", "descriptionColor": "text.secondary" },
+  "responsive": { "mobile": { "layout": "stacked, rule hidden, description indented 40px" }, "desktop": { "layout": "3-column row" } },
+  "measuredFrom": "src/pages/About.jsx:303-317, src/pages/Careers.jsx:264-279"
+}

@@ -1,0 +1,48 @@
+{
+  "$description": "Semantic roles. Every entry resolves to a foundation token id — an LLM composing a page must reference these, never a raw hex/rgb value.",
+  "text": {
+    "text.primary":   { "$ref": "color.ink.900",  "usage": "body copy, card titles, nav links, active tabs" },
+    "text.heroTitle": { "$ref": "color.ink.hero", "usage": "the h1 on /, /about, /careers, /pricing only — a slightly different near-black than text.primary; reproduced from live, not normalised away" },
+    "text.secondary": { "$ref": "color.gray.600", "usage": "eyebrows, card body copy, captions, footer links" },
+    "text.tertiary":  { "$ref": "color.gray.500", "usage": "the hero heading's muted tail, inactive filter tabs, placeholders" },
+    "text.onColor":   { "$ref": "color.white",    "usage": "label on a dark pill button" },
+    "text.disclosure":{ "$ref": "color.footer.disclosure", "usage": "footer FDIC/legal disclosure body" },
+    "text.mutedOlive":{ "$ref": "color.text.muted.olive",  "usage": "/careers Open Roles department labels and role subtitles" }
+  },
+  "surface": {
+    "surface.page":        { "$ref": "color.white" },
+    "surface.alt":         { "$ref": "color.background.2" },
+    "surface.hover":       { "$ref": "color.background.hover", "usage": "ghost-button hover; the /careers Open Roles band background" },
+    "surface.panel":       { "$ref": "color.panel.100", "usage": "the Control stage, the nav submenu panel, the hero news tag" },
+    "surface.cardVisual":  { "$ref": "color.panel.050", "usage": "the inner visual panel of a benefit card" },
+    "surface.button":      { "$ref": "color.ink.900" },
+    "surface.buttonHover": { "$ref": "color.ink.500" }
+  },
+  "border": {
+    "border.card":  { "$ref": "color.border.card",  "usage": "1px card outline; the site uses a border instead of a shadow" },
+    "border.field": { "$ref": "color.border.field", "usage": "form inputs, the Control card's inner profile panel, About/Careers rules" }
+  },
+  "accent": {
+    "accent.verified": { "$ref": "color.accent.verified", "usage": "the blue verified badge on the Control agent card — the only saturated accent on the site" }
+  },
+  "dataViz": {
+    "dataviz.volumeGradientFrom": { "$ref": "color.chart.volumeFrom" },
+    "dataviz.volumeGradientTo":   { "$ref": "color.chart.volumeTo" },
+    "dataviz.volumeLabel":        { "$ref": "color.chart.volumeLabel" },
+    "dataviz.uptimeBar":          { "$ref": "color.chart.uptime" }
+  },
+  "typeRoles": {
+    "type.h1":        { "size": "size.24", "leading": "leading.32", "weight": "weight.360", "tracking": "tracking.h1", "mdSize": "size.40", "mdLeading": "leading.56", "measuredFrom": "src/components/Hero.jsx:90" },
+    "type.h2":        { "size": "size.20", "leading": "leading.28", "weight": "weight.400", "tracking": "tracking.normal", "mdSize": "size.32", "mdLeading": "leading.40", "measuredFrom": "src/index.css:64-88" },
+    "type.h2Cta":     { "size": "size.20", "leading": "leading.28", "weight": "weight.400", "tracking": "tracking.normal", "mdSize": "size.32", "mdLeading": "leading.48", "mdTracking": "tracking.ctaH2", "measuredFrom": "src/index.css:70-88" },
+    "type.h3":        { "size": "size.15", "leading": "leading.24", "weight": "weight.400", "measuredFrom": "src/components/BenefitsSpeed.jsx:121" },
+    "type.body":      { "size": "size.15", "leading": "leading.24", "weight": "weight.400", "measuredFrom": "src/index.css:34-35" },
+    "type.bodySmall": { "size": "size.14", "leading": "leading.20", "weight": "weight.400", "measuredFrom": "src/components/Control.jsx:121" },
+    "type.eyebrow":   { "size": "size.15", "leading": "leading.24", "weight": "weight.400", "color": "text.secondary", "transform": "none", "measuredFrom": "src/index.css:91-98" },
+    "type.mono":      { "family": "font.mono", "size": "size.14", "leading": "leading.20", "measuredFrom": "src/components/Control.jsx:148" }
+  },
+  "notes": [
+    "type.eyebrow is deliberately NOT uppercase and carries no letter-spacing. src/index.css:90 records that this was re-measured against live and corrected from an earlier uppercase assumption.",
+    "text.heroTitle vs text.primary is a real two-value distinction on the source site, not a clone artefact — CLONE_SPEC.md:56 records both."
+  ]
+}

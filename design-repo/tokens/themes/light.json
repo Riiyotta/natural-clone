@@ -1,0 +1,28 @@
+{
+  "$description": "The only theme. The clone ships no dark mode: there is no prefers-color-scheme rule, no dark: variant, and no [data-theme] selector anywhere in src/. Verified by grep. Every semantic role below resolves to a literal foundation value.",
+  "themeId": "light",
+  "isDefault": true,
+  "resolved": {
+    "text.primary": "rgb(22, 21, 20)",
+    "text.heroTitle": "rgb(17, 20, 0)",
+    "text.secondary": "rgb(113, 112, 111)",
+    "text.tertiary": "#d7d6d4",
+    "text.onColor": "#ffffff",
+    "text.disclosure": "rgb(175, 175, 175)",
+    "text.mutedOlive": "rgb(136, 137, 128)",
+    "surface.page": "#ffffff",
+    "surface.alt": "#f9f9f8",
+    "surface.hover": "#fbfbfa",
+    "surface.panel": "rgb(246, 246, 246)",
+    "surface.cardVisual": "#fafafa",
+    "surface.button": "rgb(22, 21, 20)",
+    "surface.buttonHover": "#969594",
+    "border.card": "rgb(246, 246, 246)",
+    "border.field": "rgb(236, 236, 235)",
+    "accent.verified": "rgb(26, 155, 229)",
+    "dataviz.volumeGradientFrom": "rgb(217, 203, 202)",
+    "dataviz.volumeGradientTo": "rgb(226, 207, 200)",
+    "dataviz.volumeLabel": "rgb(187, 179, 180)",
+    "dataviz.uptimeBar": "rgb(179, 185, 128)"
+  }
+}

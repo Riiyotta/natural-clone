@@ -1,0 +1,18 @@
+{
+  "$description": "Breakpoints. The project declares three in Tailwind but only `md` carries real layout weight; index.css additionally uses a max-width:768px / min-width:769px pair for hand-written rules.",
+  "measuredFrom": "tailwind.config.js:5-9",
+  "tokens": {
+    "bp.md": "768px",
+    "bp.lg": "1024px",
+    "bp.xl": "1280px"
+  },
+  "handWrittenMediaQueries": {
+    "mobile": "@media (max-width: 768px)",
+    "desktop": "@media (min-width: 769px)",
+    "measuredFrom": "src/index.css:391, src/index.css:440"
+  },
+  "notes": [
+    "`lg` and `xl` are declared but no component in src/ uses an lg: or xl: variant — md: is the only breakpoint actually exercised. Verified: grep -c 'lg:\\|xl:' across src/ returns 0 matches for layout variants.",
+    "CLONE_SPEC.md section 0 flags that only 390px and 1280px were ever directly measured on the live site and that 768px is an inference from Tailwind's default. That inference is preserved here with its honest evidence level."
+  ]
+}

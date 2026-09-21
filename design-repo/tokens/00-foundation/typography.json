@@ -1,0 +1,51 @@
+{
+  "$description": "Type scale. Sizes/line-heights are the literal values used in the clone's JSX and index.css, not the aspirational scale in CLONE_SPEC.md section 0 (which lists design-system CSS custom properties that the clone does not all use).",
+  "fontFamilies": {
+    "font.miso": {
+      "$value": "\"STK Miso\", \"STK Miso fallback\", monospace",
+      "role": "body/UI face used almost everywhere",
+      "measuredFrom": "tailwind.config.js:12"
+    },
+    "font.mono": {
+      "$value": "\"GT Standard Mono\", \"GT Standard Mono fallback\", monospace",
+      "role": "code blocks, agent IDs, the terminal prompt glyph",
+      "measuredFrom": "tailwind.config.js:13"
+    },
+    "font.sans": {
+      "$value": "ui-sans-serif, system-ui, sans-serif",
+      "role": "system fallback only; no visible copy uses it",
+      "measuredFrom": "tailwind.config.js:14-22"
+    }
+  },
+  "fontSizes": {
+    "size.12": { "$value": "12px", "measuredFrom": "src/components/BenefitsSpeed.jsx:22" },
+    "size.13": { "$value": "13px", "measuredFrom": "src/components/Developers.jsx:157" },
+    "size.14": { "$value": "14px", "measuredFrom": "src/components/Control.jsx:121" },
+    "size.15": { "$value": "15px", "measuredFrom": "src/index.css:34" },
+    "size.18": { "$value": "18px", "measuredFrom": "src/pages/Blog.jsx:135" },
+    "size.20": { "$value": "20px", "measuredFrom": "src/index.css:65" },
+    "size.24": { "$value": "24px", "measuredFrom": "src/components/Hero.jsx:90" },
+    "size.32": { "$value": "32px", "measuredFrom": "src/index.css:79" },
+    "size.40": { "$value": "40px", "measuredFrom": "src/components/Hero.jsx:90" }
+  },
+  "lineHeights": {
+    "leading.16": { "$value": "16px", "measuredFrom": "tailwind.config.js:100" },
+    "leading.18": { "$value": "18px", "measuredFrom": "tailwind.config.js:101" },
+    "leading.20": { "$value": "20px", "measuredFrom": "tailwind.config.js:102" },
+    "leading.24": { "$value": "24px", "measuredFrom": "tailwind.config.js:103" },
+    "leading.28": { "$value": "28px", "measuredFrom": "tailwind.config.js:107" },
+    "leading.32": { "$value": "32px", "measuredFrom": "tailwind.config.js:108" },
+    "leading.40": { "$value": "40px", "measuredFrom": "tailwind.config.js:109" },
+    "leading.48": { "$value": "48px", "measuredFrom": "tailwind.config.js:110" },
+    "leading.56": { "$value": "56px", "measuredFrom": "tailwind.config.js:111" }
+  },
+  "fontWeights": {
+    "weight.360": { "$value": "360", "role": "h1 only", "measuredFrom": "src/components/Hero.jsx:90" },
+    "weight.400": { "$value": "400", "role": "everything else", "measuredFrom": "src/index.css:36" }
+  },
+  "letterSpacing": {
+    "tracking.h1": { "$value": "-0.8px", "measuredFrom": "src/components/Hero.jsx:90" },
+    "tracking.ctaH2": { "$value": "-0.32px", "measuredFrom": "src/index.css:86" },
+    "tracking.normal": { "$value": "normal", "measuredFrom": "src/index.css:96" }
+  }
+}

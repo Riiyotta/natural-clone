@@ -1,0 +1,935 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://design-repo.local/natural/pagespec.schema.json",
+  "title": "Natural PageSpec",
+  "description": "The machine contract for a composed page. Closed everywhere: unknown template ids, unknown section ids, unknown motion patterns, unknown asset roles and unknown properties are all rejected. Structural rules JSON Schema cannot express (template/node cross-reference, rhythm, maxWords) live in schema/semantic_validate.py and compatibility/graph.json.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "pageSpecVersion",
+    "route",
+    "basedOnTemplate",
+    "title",
+    "nodes"
+  ],
+  "properties": {
+    "pageSpecVersion": {
+      "type": "string",
+      "const": "1.0.0"
+    },
+    "route": {
+      "type": "string",
+      "enum": [
+        "/",
+        "/wallet",
+        "/vault",
+        "/pay",
+        "/request",
+        "/transfer",
+        "/connect",
+        "/identity",
+        "/observability",
+        "/disputes",
+        "/compliance",
+        "/about",
+        "/careers",
+        "/blog",
+        "/contact",
+        "/pricing"
+      ],
+      "description": "Closed to the 16 real routes. A generated page for a NEW route must first be added here and to templates/routes.json."
+    },
+    "basedOnTemplate": {
+      "type": "string",
+      "enum": [
+        "commerce.pricing",
+        "company.narrative",
+        "form.single",
+        "home.landing",
+        "index.posts",
+        "product.feature"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 300
+    },
+    "theme": {
+      "type": "string",
+      "enum": [
+        "light"
+      ],
+      "description": "The clone ships exactly one theme; there is no dark mode anywhere in src/."
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 20,
+      "items": {
+        "$ref": "#/definitions/node"
+      }
+    }
+  },
+  "definitions": {
+    "assetRole": {
+      "type": "string",
+      "enum": [
+        "brand.wordmark",
+        "decor.logo-placeholder",
+        "icon.product",
+        "icon.verified",
+        "logo.partner",
+        "photo.blog-hero",
+        "photo.feature-graphic",
+        "photo.hero-product",
+        "photo.section-graphic",
+        "photo.splash",
+        "photo.trust-badge",
+        "portrait.agent",
+        "portrait.owner",
+        "portrait.team",
+        "texture.overlay"
+      ],
+      "description": "Closed enum, mirrored from assets/asset-roles.json. extraction/verify_all.py fails if the two diverge."
+    },
+    "assetRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assetRole",
+        "src",
+        "generationMode"
+      ],
+      "properties": {
+        "assetRole": {
+          "$ref": "#/definitions/assetRole"
+        },
+        "src": {
+          "type": "string",
+          "minLength": 1
+        },
+        "alt": {
+          "type": "string",
+          "maxLength": 160
+        },
+        "generationMode": {
+          "type": "string",
+          "enum": [
+            "reuse-existing",
+            "generate-new"
+          ],
+          "description": "MUST be reuse-existing for any role whose aiGuidance is must-reuse-exact or must-not-fabricate. semantic_validate.py enforces this against assets/asset-roles.json."
+        }
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pattern",
+        "reducedMotionFallback"
+      ],
+      "properties": {
+        "pattern": {
+          "type": "string",
+          "enum": [
+            "none",
+            "entrance-stagger",
+            "entrance-fade-up",
+            "scroll-scrub-reveal",
+            "opacity-crossfade",
+            "filter-collapse"
+          ]
+        },
+        "reducedMotionFallback": {
+          "type": "string",
+          "enum": [
+            "none",
+            "static-inline",
+            "instant-swap",
+            "instant-hide"
+          ]
+        },
+        "durationMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000
+        },
+        "delayMs": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000
+        },
+        "easing": {
+          "type": "string",
+          "enum": [
+            "ease-out",
+            "ease-in-out",
+            "linear",
+            "cubic-bezier(.24,1,.36,1)",
+            "cubic-bezier(.645,.045,.355,1)",
+            "cubic-bezier(.77,0,.175,1)",
+            "cubic-bezier(.785,.135,.15,.86)",
+            "cubic-bezier(.24,.8,.24,1)"
+          ]
+        }
+      },
+      "description": "CLOSED (additionalProperties:false) to the evidence-grounded field set actually in use. Leaving it open lets a generated PageSpec smuggle in an invented field and still validate (MASTER-GUIDE 3.7)."
+    },
+    "ctaRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "href"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "href": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "section",
+        "motion",
+        "content"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "section"
+          ],
+          "description": "Closed. There is exactly one node type; alias values such as 'block' or 'module' are rejected."
+        },
+        "section": {
+          "type": "string",
+          "enum": [
+            "chrome.footer",
+            "chrome.navbar",
+            "content.blog-teaser",
+            "content.card-grid",
+            "content.numbered-principles",
+            "content.perks-grid",
+            "content.post-index",
+            "content.pricing-table",
+            "content.splash-story",
+            "content.split-feature",
+            "content.team-quote-row",
+            "content.team-roster",
+            "conversion.contact-form",
+            "conversion.final-cta",
+            "conversion.newsletter",
+            "conversion.open-roles",
+            "hero.blog-featured",
+            "hero.centered-statement",
+            "hero.left-statement",
+            "hero.product",
+            "hero.scroll-dashboard",
+            "interactive.code-explorer",
+            "interactive.tab-stage",
+            "social.investor-wall"
+          ]
+        },
+        "variant": {
+          "type": "string",
+          "maxLength": 40
+        },
+        "motion": {
+          "$ref": "#/definitions/motion"
+        },
+        "content": {
+          "type": "object"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "chrome.footer"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "chrome.navbar"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "entrance-stagger"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.blog-teaser"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.card-grid"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.numbered-principles"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.perks-grid"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.post-index"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.pricing-table"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.splash-story"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.split-feature"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.team-quote-row"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "content.team-roster"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "conversion.contact-form"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "conversion.final-cta"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "conversion.newsletter"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "conversion.open-roles"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.blog-featured"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.centered-statement"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.left-statement"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "none"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.product"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "entrance-fade-up"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "none"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "hero.scroll-dashboard"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "scroll-scrub-reveal"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "static-inline"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "interactive.code-explorer"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "opacity-crossfade"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "instant-swap"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "interactive.tab-stage"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "opacity-crossfade"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "instant-swap"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "section": {
+                "const": "social.investor-wall"
+              }
+            },
+            "required": [
+              "section"
+            ]
+          },
+          "then": {
+            "properties": {
+              "motion": {
+                "properties": {
+                  "pattern": {
+                    "enum": [
+                      "filter-collapse"
+                    ]
+                  },
+                  "reducedMotionFallback": {
+                    "const": "instant-hide"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

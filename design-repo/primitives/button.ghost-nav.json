@@ -1,0 +1,12 @@
+{
+  "id": "button.ghost-nav",
+  "layer": "primitive",
+  "name": "Nav ghost button",
+  "purpose": "The Products / Features / Company mega-menu triggers in the navbar.",
+  "props": {
+    "label":  { "type": "string", "required": true, "maxWords": 1 },
+    "active": { "type": "boolean", "required": true }
+  },
+  "style": { "radius": "radius.ghost", "color": "text.primary", "colorInactiveHover": "text.secondary", "type": "type.body" },
+  "measuredFrom": "src/components/Navbar.jsx:99-112"
+}

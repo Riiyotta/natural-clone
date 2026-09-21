@@ -1,0 +1,28 @@
+{
+  "$description": "Foundation color palette. Every value is copied verbatim from the clone's Tailwind theme (tailwind.config.js) or from a literal in src/index.css / a component. No color appears here that is not present in the real source.",
+  "measuredFrom": "tailwind.config.js:24-48",
+  "tokens": {
+    "color.white": { "$value": "#ffffff", "measuredFrom": "tailwind.config.js:26" },
+    "color.background.2": { "$value": "#f9f9f8", "measuredFrom": "tailwind.config.js:27" },
+    "color.background.hover": { "$value": "#fbfbfa", "measuredFrom": "tailwind.config.js:28" },
+    "color.background.secondaryHover": { "$value": "#f4f4f3", "measuredFrom": "tailwind.config.js:29" },
+    "color.ink.900": { "$value": "rgb(22, 21, 20)", "measuredFrom": "tailwind.config.js:30" },
+    "color.ink.500": { "$value": "#969594", "measuredFrom": "tailwind.config.js:31" },
+    "color.ink.hero": { "$value": "rgb(17, 20, 0)", "measuredFrom": "src/components/Hero.jsx:89-90" },
+    "color.gray.600": { "$value": "rgb(113, 112, 111)", "measuredFrom": "tailwind.config.js:36" },
+    "color.gray.500": { "$value": "#d7d6d4", "measuredFrom": "tailwind.config.js:46" },
+    "color.gray.400": { "$value": "#e6e5e4", "measuredFrom": "tailwind.config.js:44" },
+    "color.gray.100": { "$value": "#fbfbfa", "measuredFrom": "tailwind.config.js:43" },
+    "color.panel.100": { "$value": "rgb(246, 246, 246)", "measuredFrom": "tailwind.config.js:40" },
+    "color.panel.050": { "$value": "#fafafa", "measuredFrom": "src/components/BenefitsSpeed.jsx:11" },
+    "color.border.card": { "$value": "rgb(246, 246, 246)", "measuredFrom": "tailwind.config.js:40" },
+    "color.border.field": { "$value": "rgb(236, 236, 235)", "measuredFrom": "src/components/Control.jsx:109" },
+    "color.accent.verified": { "$value": "rgb(26, 155, 229)", "measuredFrom": "src/components/Control.jsx:44" },
+    "color.chart.volumeFrom": { "$value": "rgb(217, 203, 202)", "measuredFrom": "src/components/BenefitsScale.jsx:29" },
+    "color.chart.volumeTo": { "$value": "rgb(226, 207, 200)", "measuredFrom": "src/components/BenefitsScale.jsx:29" },
+    "color.chart.uptime": { "$value": "rgb(179, 185, 128)", "measuredFrom": "src/components/BenefitsScale.jsx:60" },
+    "color.chart.volumeLabel": { "$value": "rgb(187, 179, 180)", "measuredFrom": "src/components/BenefitsScale.jsx:16" },
+    "color.footer.disclosure": { "$value": "rgb(175, 175, 175)", "measuredFrom": "src/components/Footer.jsx:104" },
+    "color.text.muted.olive": { "$value": "rgb(136, 137, 128)", "measuredFrom": "src/pages/Careers.jsx:328" }
+  }
+}

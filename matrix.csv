@@ -1,0 +1,26 @@
+section,category,templates,routes,Homepage,Product detail,About,Careers,Blog index,Pricing,Contact
+chrome.navbar,CHROME,7,16,x,x,x,x,x,x,x
+chrome.footer,CHROME,7,16,x,x,x,x,x,x,x
+conversion.final-cta,CONVERSION,6,15,x,x,x,x,,x,x
+hero.product-detail,HERO,1,10,,x,,,,,
+narrative.feature-card-grid,NARRATIVE,1,10,,x,,,,,
+hero.statement,HERO,2,2,,,x,x,,,
+hero.page-title,HERO,2,2,,,,,x,x,
+narrative.values,NARRATIVE,2,2,,,x,x,,,
+proof.investors,PROOF,2,2,x,,x,,,,
+hero.scroll-dashboard,HERO,1,1,x,,,,,,
+narrative.benefits-speed,NARRATIVE,1,1,x,,,,,,
+narrative.flows,NARRATIVE,1,1,x,,,,,,
+narrative.control,NARRATIVE,1,1,x,,,,,,
+narrative.developers,NARRATIVE,1,1,x,,,,,,
+narrative.benefits-scale,NARRATIVE,1,1,x,,,,,,
+narrative.company-story,NARRATIVE,1,1,,,x,,,,
+narrative.team,NARRATIVE,1,1,,,x,,,,
+narrative.benefits-perks,NARRATIVE,1,1,,,,x,,,
+content.blog-teaser,CONTENT,1,1,x,,,,,,
+content.blog-index,CONTENT,1,1,,,,,x,,
+content.blog-newsletter,CONTENT,1,1,,,,,x,,
+content.open-roles,CONTENT,1,1,,,,x,,,
+content.pricing-table,CONTENT,1,1,,,,,,x,
+content.contact-form,CONTENT,1,1,,,,,,,x
+ROUTE COUNT,,,16,1,10,1,1,1,1,1

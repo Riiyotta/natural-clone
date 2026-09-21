@@ -1,0 +1,21 @@
+{
+  "id": "content.splash-story",
+  "category": "content",
+  "name": "Mid-page splash + story",
+  "purpose": "A full-width textured photograph stacked ABOVE a lead/body split — the narrative opening of /about and /careers.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "splash":     { "$ref": "components/splash-texture-stack" },
+      "lead":       { "type": "string", "maxWords": 8, "note": "the left-hand h2; omitted on /careers, which puts a logo mark in this slot instead" },
+      "paragraphs": { "type": "array", "minItems": 2, "maxItems": 3, "items": { "type": "string", "maxWords": 45 } },
+      "cta":        { "$ref": "primitives/button.pill-primary" }
+    },
+    "required": ["splash", "paragraphs"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "layout": "fully stacked", "splashHeight": "400px" }, "desktop": { "layout": "image above a 680px lead + 480px body row", "splashHeight": "640px" } },
+  "quirkNote": "On BOTH routes the lead wrapper carries a fixed 24px height with overflow:visible on mobile, so a 2-line h2 visually overflows its box while the layout gap to the next block is still measured from the 24px box. This is a real quirk of the original that the clone deliberately reproduces (src/pages/About.jsx:256-261) — do not 'fix' it.",
+  "measuredFrom": "src/pages/About.jsx:234-293, src/pages/Careers.jsx:172-213"
+}

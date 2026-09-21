@@ -1,0 +1,26 @@
+{
+  "id": "content.split-feature",
+  "category": "content",
+  "name": "Split text + card stage",
+  "purpose": "An asymmetric two-column section: a bulleted claim list with CTAs on the left, a framed product card on the right. The homepage's 'Control' section.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 8 },
+      "bullets": { "type": "array", "minItems": 3, "maxItems": 5, "items": { "type": "string", "maxWords": 10 } },
+      "primaryCta":   { "$ref": "primitives/button.pill-primary" },
+      "secondaryCta": { "$ref": "primitives/button.pill-ghost" },
+      "stageCard":    { "$ref": "components/card.agent-profile" }
+    },
+    "required": ["eyebrow", "heading", "bullets", "primaryCta", "secondaryCta", "stageCard"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": {
+    "mobile":  { "layout": "stacked with the stage HOISTED ABOVE the text (order:-1)", "stageMinHeight": "480px", "stagePadding": "40px 20px" },
+    "desktop": { "layout": "row, 556px text + 604px stage, gap space.40", "sectionMinHeight": "800px", "stageMinHeight": "560px" }
+  },
+  "layoutNote": "The two columns are NOT an even 50/50 grid. A grid-cols-2 gives 580/580 and makes the stage 24px too narrow.",
+  "measuredFrom": "src/components/Control.jsx:169-214, src/index.css:450-492"
+}

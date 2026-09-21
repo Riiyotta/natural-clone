@@ -1,0 +1,32 @@
+{
+  "id": "content.blog-teaser",
+  "category": "content",
+  "name": "Blog teaser block",
+  "purpose": "Promote one featured post with a wide image plus three recent posts beneath it. The homepage's 'Blog' section.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow":  { "type": "string", "maxWords": 3 },
+      "heading":  { "type": "string", "maxWords": 6 },
+      "featured": {
+        "additionalProperties": false,
+        "properties": { "href": { "type": "string" }, "image": { "type": "assetRef", "assetRole": "photo.blog-hero" } },
+        "required": ["href", "image"]
+      },
+      "posts": {
+        "type": "array", "minItems": 3, "maxItems": 3,
+        "items": {
+          "additionalProperties": false,
+          "properties": { "title": { "type": "string", "maxWords": 6 }, "date": { "type": "string", "maxWords": 3 }, "href": { "type": "string" }, "image": { "type": "assetRef", "assetRole": "photo.blog-hero" } },
+          "required": ["title", "date", "href", "image"]
+        }
+      }
+    },
+    "required": ["eyebrow", "heading", "featured", "posts"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "columns": 1, "featuredAspect": "16/9", "itemAspect": "16/9" }, "desktop": { "columns": 3, "featuredAspect": "1200/560", "itemHeight": "200px", "sectionMinHeight": "1192px" } },
+  "structuralNote": "The h2 is the SECTION's own heading and sits ABOVE the featured image with a 40px gap — it is not a caption rendered beneath it. Post titles are text.secondary and dates are text.tertiary (not primary/secondary), both at 15px/24px.",
+  "measuredFrom": "src/components/Blog.jsx:22-56"
+}

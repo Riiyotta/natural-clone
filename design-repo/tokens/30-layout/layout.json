@@ -1,0 +1,65 @@
+{
+  "$description": "Layout and grid tokens, plus the hero's corrected viewport-relative geometry.",
+  "container": {
+    "sectionMaxWidth": "1280px",
+    "contentMaxWidth": "1200px",
+    "headerColumnMaxWidth": "480px",
+    "proseColumnMaxWidth": "720px",
+    "gutterMobile": "space.32",
+    "gutterDesktop": "space.40",
+    "sectionPaddingY": "space.120",
+    "measuredFrom": "src/components/BenefitsSpeed.jsx:107, src/components/Flows.jsx:59"
+  },
+  "grid": {
+    "cardGrid": { "mobile": "1 column", "desktop": "3 columns", "gap": "space.40", "measuredFrom": "src/components/BenefitsSpeed.jsx:113" },
+    "footerNav": { "mobile": "1 column, row-gap space.64", "desktop": "320px 320px 320px, gap-x space.120, gap-y space.120", "measuredFrom": "src/components/Footer.jsx:87" },
+    "controlRow": { "mobile": "stacked, stage first (order:-1)", "desktop": "556px text + 604px stage, gap space.40", "measuredFrom": "src/index.css:475-492" }
+  },
+  "heroGeometry": {
+    "$description": "CORRECTED. CLONE_SPEC.md:186 asserts .hero-dashboard-sticky is a flat 820px tall. That is FALSE — 820px is only the value at viewport height 900, the one height the clone had historically been spot-checked at. Re-measured on live with Playwright at desktop 1280/1440/1600/1920 x 700/800/900/1080 and mobile 375x667, 390x700, 390x844, 390x900, 430x932, 768x1024: every hero dimension tracks the viewport HEIGHT and is independent of viewport WIDTH, holding exactly at all viewports with zero residual.",
+    "supersedes": "CLONE_SPEC.md:186",
+    "desktop": {
+      "appliesAt": "min-width: 769px",
+      "stickyHeight": "calc(100vh - 80px)",
+      "landingHeroHeight": "calc(100vh - 240px)",
+      "clipY": "calc(100vh - 384px)",
+      "liveDeclaredAnchorTop": "calc(50vh - 40px)",
+      "cloneAnchorTop": "calc(50vh - 280px)",
+      "anchorTopOffsetExplanation": "The clone's sticky is inset 160px where live's is 80px (the clone uses a -80px margin-top under a fixed nav and absorbs both offsets in one padding), so the clone's declared top carries an extra -240px: 50vh - 40 - 240.",
+      "stickyPaddingTop": "160px",
+      "stickyPaddingBottom": "80px",
+      "measuredFrom": "src/index.css:253-290"
+    },
+    "mobile": {
+      "appliesAt": "max-width: 768px",
+      "wrapperHeight": "calc(100vh - 32px)",
+      "stickyHeight": "calc(100vh - 32px)",
+      "landingHeroHeight": "calc(100vh - 80px)",
+      "clipY": "calc(100vh - 542px)",
+      "cloneAnchorTop": "calc(100vh - 566px)",
+      "landingHeroRowGap": "space.64",
+      "landingHeroContentRowGap": "space.32",
+      "innerPadding": "space.24",
+      "scrollScrubActive": false,
+      "scrollScrubNote": "The mobile hero fills exactly one screen, so the scroll range is zero, --progress never advances past 0, and the dashboard clip stays a 48x48 box. This is the real live behaviour, not a degradation.",
+      "measuredFrom": "src/index.css:381-426"
+    },
+    "scrollRange": {
+      "value": "2060px",
+      "evidenceLevel": "UNRESOLVED — asserted, not re-measured",
+      "warning": "CLONE_SPEC.md:183 and src/components/Hero.jsx:68 both assert a flat 2060px outer-wrapper height at desktop. Unlike the sticky/landing-hero/clip dimensions, this number was NOT re-measured across viewport heights during the correction pass that produced the viewport-relative rules above. It is internally inconsistent with them: the sticky is 100vh-80px, so the usable scroll range (heroHeight - innerHeight, per src/components/Hero.jsx:39) is 2060 - 100vh, which varies with viewport height rather than being fixed. A generator MUST NOT treat 2060 as a measured constant. Treat the scroll-scrub as 'a pinned range longer than one viewport, exact length unverified'.",
+      "measuredFrom": "src/components/Hero.jsx:68"
+    }
+  },
+  "sectionMinHeights": {
+    "$description": "Desktop-only floors, each verified in the source as scoped behind min-width:769px or an inline style.",
+    "control": { "value": "800px", "scope": "desktop only", "measuredFrom": "src/index.css:476-478" },
+    "investors": { "value": "1010px", "scope": "desktop only", "measuredFrom": "src/index.css:489-491" },
+    "finalCta": { "value": "532px", "scope": "desktop only", "measuredFrom": "src/index.css:496-500" },
+    "benefitsScale": { "value": "756px", "scope": "all widths (inline style)", "measuredFrom": "src/components/BenefitsScale.jsx:97" },
+    "blogHome": { "value": "1192px", "scope": "all widths (inline style)", "measuredFrom": "src/components/Blog.jsx:24" },
+    "pricingHero": { "value": "532px", "scope": "all widths (inline style)", "measuredFrom": "src/pages/Pricing.jsx:372" },
+    "contact": { "mobile": "772px", "desktop": "828px", "measuredFrom": "src/pages/Contact.jsx:28" },
+    "aboutCareersHero": { "mobile": "420px", "desktop": "588px", "measuredFrom": "src/pages/About.jsx:204" }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "hero.centered-statement",
+  "category": "hero",
+  "name": "Centered statement hero",
+  "purpose": "A short, center-aligned mission statement with one or two CTAs and no visual. Opens /about and /careers.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "heading":      { "type": "string", "maxWords": 10 },
+      "primaryCta":   { "$ref": "primitives/button.pill-primary" },
+      "secondaryCta": { "$ref": "primitives/button.pill-ghost" }
+    },
+    "required": ["heading", "primaryCta"]
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "maxPerPage": 1 },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none", "detail": "No entrance classes on these routes — the page-entrance system is homepage/navbar only." },
+  "responsive": { "mobile": { "minHeight": "420px", "headingType": "24px/32px" }, "desktop": { "minHeight": "588px", "headingType": "40px/56px" } },
+  "measuredFrom": "src/pages/About.jsx:204-228, src/pages/Careers.jsx:153-169"
+}

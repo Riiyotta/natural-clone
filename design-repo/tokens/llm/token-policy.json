@@ -1,0 +1,72 @@
+{
+  "$description": "What is machine-ENFORCED versus what is convention. Never let a reader assume a convention is a guarantee.",
+  "version": "1.0.0",
+  "enforced": [
+    {
+      "rule": "Section / template / route / assetRole / motion-pattern ids are closed enums.",
+      "enforcedBy": "schema/pagespec.schema.json",
+      "provenBy": "schema/tests/adversarial_test.py (schema category)"
+    },
+    {
+      "rule": "The motion object is closed; an invented motion field is rejected.",
+      "enforcedBy": "schema/pagespec.schema.json definitions.motion.additionalProperties:false",
+      "provenBy": "schema/tests/adversarial_test.py"
+    },
+    {
+      "rule": "A PageSpec's nodes are cross-referenced against its DECLARED template's real node list.",
+      "enforcedBy": "schema/semantic_validate.py TEMPLATE_NODE_SEQUENCE_MATCH",
+      "provenBy": "schema/tests/adversarial_test.py (structural category)"
+    },
+    {
+      "rule": "Per-field maxWords budgets, resolved through component and primitive $refs.",
+      "enforcedBy": "schema/semantic_validate.py MAXWORDS",
+      "provenBy": "schema/tests/adversarial_test.py (runtime category)"
+    },
+    {
+      "rule": "must-not-fabricate / must-reuse-exact asset roles cannot be marked generate-new.",
+      "enforcedBy": "schema/semantic_validate.py NO_FABRICATED_BRAND_ASSETS",
+      "provenBy": "schema/tests/adversarial_test.py (compliance category)"
+    },
+    {
+      "rule": "Allowlist parity: no phantom allowlist entry, no orphaned contract file.",
+      "enforcedBy": "extraction/verify_all.py",
+      "provenBy": "a scratch-copy drift test that injects a phantom entry and confirms failure"
+    },
+    {
+      "rule": "Citation validity: every measuredFrom resolves to a real, in-range span of a real file.",
+      "enforcedBy": "extraction/verify_all.py",
+      "provenBy": "a scratch-copy drift test that injects an out-of-range citation"
+    },
+    {
+      "rule": "registry.manifest.json's counts block is RECOMPUTED from the files it summarises.",
+      "enforcedBy": "extraction/verify_all.py",
+      "provenBy": "a scratch-copy drift test that injects a wrong count"
+    },
+    {
+      "rule": "allowlistVersion in the manifest matches component-allowlist.json's own version.",
+      "enforcedBy": "extraction/verify_all.py"
+    },
+    {
+      "rule": "Every rule id in compatibility/graph.json has a matching implementation in semantic_validate.py, and vice versa.",
+      "enforcedBy": "extraction/verify_all.py"
+    }
+  ],
+  "conventionOnly": [
+    {
+      "field": "registry.manifest.json repositoryVersion",
+      "status": "documentation-only, hand-maintained. Nothing checks it."
+    },
+    {
+      "field": "registry.manifest.json pageSpecVersion",
+      "status": "documentation-only. The schema pins the value with a const, but no process bumps it."
+    },
+    {
+      "field": "section `purpose` prose",
+      "status": "human-authored guidance; unchecked."
+    },
+    {
+      "field": "tokens/00-foundation elevation tokens",
+      "status": "declared in the real Tailwind theme but used by no component. Available, not endorsed."
+    }
+  ]
+}

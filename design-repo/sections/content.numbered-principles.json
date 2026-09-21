@@ -1,0 +1,19 @@
+{
+  "id": "content.numbered-principles",
+  "category": "content",
+  "name": "Numbered principles list",
+  "purpose": "An indexed editorial list of beliefs, each a number + headline on the left and an explanation on the right. /about 'Opportunity' and /careers 'Values' are the same section type with different copy.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 10 },
+      "items":   { "type": "array", "minItems": 3, "maxItems": 6, "items": { "$ref": "components/numbered-list-row" } }
+    },
+    "required": ["eyebrow", "heading", "items"]
+  },
+  "constraints": { "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "layout": "stacked, hairline rule hidden, description indented 40px" }, "desktop": { "layout": "320px / rule / 320px with a space.120 gap" } },
+  "measuredFrom": "src/pages/About.jsx:296-319, src/pages/Careers.jsx:257-280"
+}

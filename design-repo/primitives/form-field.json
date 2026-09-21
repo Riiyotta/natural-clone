@@ -1,0 +1,24 @@
+{
+  "id": "form-field",
+  "layer": "primitive",
+  "name": "Labelled form field",
+  "purpose": "The text/select input used by the only real form on the site, /contact.",
+  "props": {
+    "label":       { "type": "string", "required": true, "maxWords": 3 },
+    "kind":        { "type": "enum", "values": ["text", "email", "url", "select"], "required": true },
+    "placeholder": { "type": "string", "required": true, "maxWords": 4 },
+    "maxLength":   { "type": "integer", "required": true }
+  },
+  "style": {
+    "height": "46px",
+    "radius": "radius.lg",
+    "border": "border.field",
+    "borderFocus": "color.gray.500",
+    "padding": "space.12",
+    "type": "type.bodySmall",
+    "labelPaddingBottom": "space.8",
+    "placeholderColor": "text.tertiary"
+  },
+  "behaviorNote": "The form does not submit anywhere — onSubmit calls preventDefault and nothing else. This is a deliberate no-outbound-request property of the clone and MUST be preserved: do not wire a generated page's form to a real endpoint.",
+  "measuredFrom": "src/pages/Contact.jsx:23-25, src/pages/Contact.jsx:35-47"
+}

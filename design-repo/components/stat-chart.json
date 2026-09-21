@@ -1,0 +1,21 @@
+{
+  "id": "stat-chart",
+  "layer": "component",
+  "name": "Inline stat chart",
+  "purpose": "Two purely decorative CSS/DOM charts used as card visuals on the Home 'Scale with confidence' section. Neither is an image asset.",
+  "variants": {
+    "volumeBars": {
+      "note": "36 ascending-noise bars in a 291x128 chart on a #fafafa panel, gradient-filled bottom-to-top, with a 'Volume' label above",
+      "barCount": 36, "chartHeight": "128px", "panelHeight": "240px", "panelPadding": "40px 20px",
+      "gradient": "linear-gradient(to top, dataviz.volumeGradientFrom, dataviz.volumeGradientTo)",
+      "opacityNote": "opacity is 1 — the muted look comes from the gradient's own desaturated colors, not a 0.4 overlay. Recorded as an explicit correction in the source.",
+      "measuredFrom": "src/components/BenefitsScale.jsx:9-36"
+    },
+    "uptimeBars": {
+      "note": "two right-aligned rows (API, MCP) of 28 solid 6x20 olive bars each",
+      "rows": ["API", "MCP"], "barsPerRow": 28, "barSize": "6px x 20px", "color": "dataviz.uptimeBar", "opacity": 1,
+      "measuredFrom": "src/components/BenefitsScale.jsx:38-69"
+    }
+  },
+  "accessibility": { "ariaHidden": true, "note": "both are aria-hidden in the source — decorative, with the real claim carried by the card title text" }
+}

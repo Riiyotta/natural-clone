@@ -1,0 +1,33 @@
+{
+  "id": "content.post-index",
+  "category": "content",
+  "name": "Filtered post index",
+  "purpose": "The full /blog listing: text filters over a single narrow column of image + title + description + byline rows.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "filters": { "$ref": "primitives/filter-tabs" },
+      "posts": {
+        "type": "array", "minItems": 1, "maxItems": 60,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "title":  { "type": "string", "maxWords": 10 },
+            "desc":   { "type": "string", "maxWords": 30, "note": "line-clamped to 2 lines" },
+            "author": { "type": "string", "maxWords": 4 },
+            "date":   { "type": "string", "maxWords": 4 },
+            "href":   { "type": "string" },
+            "image":  { "type": "assetRef", "assetRole": "photo.blog-hero" }
+          },
+          "required": ["title", "desc", "author", "date", "href", "image"]
+        }
+      }
+    },
+    "required": ["filters", "posts"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "paginationNote": "All posts render in the initial DOM. There is no pagination and no load-more — confirmed against live and recorded in the source.",
+  "responsive": { "mobile": { "layout": "stacked, image 16/9", "rowGap": "space.40" }, "desktop": { "layout": "320x160 image beside text", "rowGap": "space.80", "columnMaxWidth": "720px" } },
+  "measuredFrom": "src/pages/Blog.jsx:92-130"
+}

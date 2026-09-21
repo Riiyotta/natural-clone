@@ -1,0 +1,17 @@
+{
+  "$description": "Spacing scale, verbatim from the clone's Tailwind spacing extension. Values are literal px (this project overrides Tailwind's rem-based core scale).",
+  "measuredFrom": "tailwind.config.js:49-82",
+  "tokens": {
+    "space.2": "2px", "space.4": "4px", "space.6": "6px", "space.8": "8px",
+    "space.10": "10px", "space.12": "12px", "space.14": "14px", "space.16": "16px",
+    "space.20": "20px", "space.24": "24px", "space.28": "28px", "space.32": "32px",
+    "space.36": "36px", "space.40": "40px", "space.48": "48px", "space.56": "56px",
+    "space.60": "60px", "space.64": "64px", "space.72": "72px", "space.80": "80px",
+    "space.120": "120px", "space.160": "160px", "space.200": "200px",
+    "space.240": "240px", "space.280": "280px", "space.320": "320px"
+  },
+  "notes": [
+    "space.36 and space.60 are explicitly enumerated in the config with source comments explaining that omitting them makes Tailwind fall back to its rem core scale (144px / 240px) — see tailwind.config.js:62-72.",
+    "Section vertical rhythm is space.120 on nearly every section; space.240 is used for the bottom padding of /careers Perks and /blog newsletter."
+  ]
+}

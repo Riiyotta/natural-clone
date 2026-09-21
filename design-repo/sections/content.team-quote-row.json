@@ -1,0 +1,20 @@
+{
+  "id": "content.team-quote-row",
+  "category": "content",
+  "name": "Team quote row",
+  "purpose": "A horizontally-scrolling row of wide photo-topped quote cards from named employees. The /careers 'Team' section.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 10 },
+      "cards":   { "type": "array", "minItems": 2, "maxItems": 8, "items": { "$ref": "components/card.team-quote" } }
+    },
+    "required": ["eyebrow", "heading", "cards"]
+  },
+  "constraints": { "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none", "detail": "Plain native horizontal overflow scroll with the scrollbar hidden. No autoplay, no marquee." },
+  "responsive": { "mobile": { "cardWidth": "335px" }, "desktop": { "cardWidth": "580px" } },
+  "assetPolicy": "Every card carries a portrait.team asset — real photographs of real employees. must-not-fabricate.",
+  "measuredFrom": "src/pages/Careers.jsx:216-254"
+}

@@ -1,0 +1,69 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "route": "/contact",
+  "basedOnTemplate": "form.single",
+  "title": "Contact",
+  "description": "The /contact route: the one hero-less, CTA-less shape on the site.",
+  "theme": "light",
+  "nodes": [
+    {
+      "type": "section",
+      "section": "chrome.navbar",
+      "motion": {
+        "pattern": "entrance-stagger",
+        "reducedMotionFallback": "none",
+        "durationMs": 400,
+        "delayMs": 1000,
+        "easing": "ease-out"
+      },
+      "content": {}
+    },
+    {
+      "type": "section",
+      "section": "conversion.contact-form",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "heading": "Talk to the team",
+        "fields": [
+          {
+            "label": "Name",
+            "kind": "text",
+            "placeholder": "Name",
+            "maxLength": 32
+          },
+          {
+            "label": "Email",
+            "kind": "email",
+            "placeholder": "hi@natural.com",
+            "maxLength": 80
+          },
+          {
+            "label": "Website",
+            "kind": "url",
+            "placeholder": "company.com",
+            "maxLength": 100
+          },
+          {
+            "label": "Team size",
+            "kind": "select",
+            "placeholder": "Select team size",
+            "maxLength": 16
+          }
+        ],
+        "submitLabel": "Continue"
+      }
+    },
+    {
+      "type": "section",
+      "section": "chrome.footer",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {}
+    }
+  ]
+}

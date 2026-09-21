@@ -1,0 +1,19 @@
+{
+  "id": "hero.left-statement",
+  "category": "hero",
+  "name": "Left-aligned statement hero",
+  "purpose": "A left-aligned h1 over a CTA row, with no visual. Opens /pricing; the same shape (with a body paragraph and a hero image) opens every product route.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "heading":      { "type": "string", "maxWords": 6 },
+      "primaryCta":   { "$ref": "primitives/button.pill-primary" },
+      "secondaryCta": { "$ref": "primitives/button.pill-ghost" }
+    },
+    "required": ["heading", "primaryCta", "secondaryCta"]
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "maxPerPage": 1 },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "headingType": "24px/32px" }, "desktop": { "minHeight": "532px", "headingType": "40px/56px" } },
+  "measuredFrom": "src/pages/Pricing.jsx:372-396"
+}

@@ -1,0 +1,16 @@
+{
+  "id": "card.team-quote",
+  "layer": "component",
+  "name": "Team member quote card",
+  "purpose": "A wide photo-topped card in the /careers horizontally-scrolling team row.",
+  "content": {
+    "name":   { "type": "string", "required": true, "maxWords": 4 },
+    "role":   { "type": "string", "required": true, "maxWords": 6 },
+    "quote":  { "type": "string", "required": true, "maxWords": 45, "note": "line-clamped to 3 lines desktop / 4 mobile" },
+    "footer": { "type": "string", "required": true, "maxWords": 6 },
+    "photo":  { "type": "assetRef", "required": true, "assetRole": "portrait.team" }
+  },
+  "style": { "width": "580px desktop / 335px mobile", "imageHeight": "240px", "radius": "radius.sm", "border": "border.card", "padding": "space.40 desktop / space.24 mobile", "gap": "space.40 desktop / space.24 mobile" },
+  "assetPolicy": "portrait.team is must-not-fabricate — these are real photographs of real employees of a real company.",
+  "measuredFrom": "src/pages/Careers.jsx:226-252"
+}

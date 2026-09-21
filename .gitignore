@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Generated build artifact — regenerated fresh by the design-repo verification
+# pass. Never commit it next to the folder it is built from: it goes stale the
+# moment design-repo/ changes, and whoever clones then gets two disagreeing
+# copies of the same design-repo in one package.
+design-repo.zip
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Env
+.env
+.env.*
+!.env.example

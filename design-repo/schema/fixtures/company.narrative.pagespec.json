@@ -1,0 +1,239 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "route": "/about",
+  "basedOnTemplate": "company.narrative",
+  "title": "About",
+  "description": "The /about route: the company-narrative shape with a team roster and the investor wall.",
+  "theme": "light",
+  "nodes": [
+    {
+      "type": "section",
+      "section": "chrome.navbar",
+      "motion": {
+        "pattern": "entrance-stagger",
+        "reducedMotionFallback": "none",
+        "durationMs": 400,
+        "delayMs": 1000,
+        "easing": "ease-out"
+      },
+      "content": {}
+    },
+    {
+      "type": "section",
+      "section": "hero.centered-statement",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "heading": "We make money movement feel effortless",
+        "primaryCta": {
+          "label": "View careers",
+          "href": "/careers"
+        },
+        "secondaryCta": {
+          "label": "Email the team",
+          "href": "mailto:founders@natural.com"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.splash-story",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "splash": {
+          "photo": {
+            "assetRole": "photo.splash",
+            "src": "/assets/images/brand/nature-desk.jpg",
+            "alt": "A desk overlooking the California coast",
+            "generationMode": "reuse-existing"
+          },
+          "opacity": 0.25
+        },
+        "lead": "Natural was founded 405 days ago",
+        "paragraphs": [
+          "The company was incorporated on August 12th, 2025, inspired by a 15-page memo Kahlil wrote that summer. It was a bold vision for what the world would become.",
+          "Within 72 hours of sharing the memo, Natural raised a $10M seed round from the best investors in technology and financial services.",
+          "At the time, Natural was simply words on paper. We had conviction that the shift ahead was inevitable, and were committed to building the company that would shape it."
+        ],
+        "cta": {
+          "label": "The original memo",
+          "href": "/blog/agentic-payments-memo"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.numbered-principles",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Opportunity",
+        "heading": "The largest market payments has ever seen",
+        "items": [
+          {
+            "number": "1",
+            "headline": "This is a fundamental platform shift",
+            "description": "Over the next decade, agents will execute a majority of global payment volume. We're building the rails to support it."
+          },
+          {
+            "number": "2",
+            "headline": "We're early and there's no winner yet",
+            "description": "The category is new enough that the defining company has not been decided. We intend to be it."
+          },
+          {
+            "number": "3",
+            "headline": "Payments infrastructure compounds",
+            "description": "Every wallet, transfer and dispute we handle makes the network more useful to the next agent that joins it."
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.team-roster",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Team",
+        "heading": "Today, the team is 20 people. All based in San Francisco",
+        "people": [
+          {
+            "name": "Kahlil Lalji",
+            "title": "Founder & CEO",
+            "href": "/blog/introducing-natural"
+          },
+          {
+            "name": "Devan Patel",
+            "title": "Founding Designer",
+            "href": "/blog/why-devan-joined-natural"
+          },
+          {
+            "name": "Gabby Smith",
+            "title": "Head of Marketing",
+            "href": "/blog/why-gabby-joined-natural"
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "social.investor-wall",
+      "motion": {
+        "pattern": "filter-collapse",
+        "reducedMotionFallback": "instant-hide",
+        "durationMs": 150,
+        "easing": "ease-out"
+      },
+      "content": {
+        "eyebrow": "Investors",
+        "heading": "Backed by the best investors and operators in fintech",
+        "filters": {
+          "options": [
+            "All",
+            "Firms",
+            "Individuals"
+          ],
+          "selected": "All"
+        },
+        "cards": [
+          {
+            "quote": "For the power of agents to be fully realized they need to be able to access payments infra. Natural makes that happen.",
+            "name": "Immad Akhund",
+            "title": "CEO, Mercury",
+            "tint": "#5266eb",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Natural is an elegant solution to one of the most obvious problems with agents: they can't pay for things.",
+            "name": "Pete Koomen",
+            "title": "GP, Y Combinator",
+            "tint": "#ff6600",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Agentic payments will dwarf human-initiated payments within a decade. Natural is pioneering this frontier.",
+            "name": "Zach Abrams",
+            "title": "CEO, Bridge",
+            "tint": "#030712",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Natural has the team, the vision and the execution to harness the massive opportunity in agentic payments.",
+            "name": "Michael Tannenbaum",
+            "title": "CEO, Figure",
+            "tint": "#5b56f5",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Regulation will evolve, but the shift toward agentic payments is inevitable and Natural is the clear leader.",
+            "name": "Art Levy",
+            "title": "CBO, Brex",
+            "tint": "#00070a",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "I invested in Natural because I believe agents will require a radical rethink of the infrastructure services of the internet.",
+            "name": "Guillermo Rauch",
+            "title": "CEO, Vercel",
+            "tint": "#000000",
+            "onLightTint": true,
+            "wide": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "conversion.final-cta",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "headingLine1": "Payments made Natural.",
+        "headingLine2": "Start building on Natural today",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "splash": {
+          "photo": {
+            "assetRole": "photo.splash",
+            "src": "/assets/images/brand/nature-desk.jpg",
+            "alt": "Natural",
+            "generationMode": "reuse-existing"
+          },
+          "opacity": 0.1
+        }
+      },
+      "variant": "default"
+    },
+    {
+      "type": "section",
+      "section": "chrome.footer",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {}
+    }
+  ]
+}

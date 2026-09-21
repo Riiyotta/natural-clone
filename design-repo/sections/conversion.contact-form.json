@@ -1,0 +1,21 @@
+{
+  "id": "conversion.contact-form",
+  "category": "conversion",
+  "name": "Contact form",
+  "purpose": "The site's only real form — a vertically-centered 480px column of four fields and a submit. It is the entire content of /contact.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "heading": { "type": "string", "maxWords": 5 },
+      "fields":  { "type": "array", "minItems": 2, "maxItems": 8, "items": { "$ref": "primitives/form-field" } },
+      "submitLabel": { "type": "string", "maxWords": 3 }
+    },
+    "required": ["heading", "fields", "submitLabel"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustBeFirst": true, "mustBeLastContentSection": true },
+  "constraintNote": "mustBeFirst AND mustBeLastContentSection simultaneously, because /contact is the one route whose body is a single section. This is real, not a contradiction.",
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "behaviorNote": "onSubmit calls preventDefault and nothing else. The submit button is disabled until all four fields are non-empty. No data leaves the page. Do NOT wire a generated version to a real endpoint.",
+  "responsive": { "mobile": { "minHeight": "772px", "headingType": "20px/28px" }, "desktop": { "minHeight": "828px", "headingType": "32px/40px" } },
+  "measuredFrom": "src/pages/Contact.jsx:27-111"
+}

@@ -1,0 +1,124 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "route": "/blog",
+  "basedOnTemplate": "index.posts",
+  "title": "Blog",
+  "description": "The /blog index: a featured hero, the full filtered listing, and a newsletter capture.",
+  "theme": "light",
+  "nodes": [
+    {
+      "type": "section",
+      "section": "chrome.navbar",
+      "motion": {
+        "pattern": "entrance-stagger",
+        "reducedMotionFallback": "none",
+        "durationMs": 400,
+        "delayMs": 1000,
+        "easing": "ease-out"
+      },
+      "content": {}
+    },
+    {
+      "type": "section",
+      "section": "hero.blog-featured",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "title": "Unapologetically non-normal",
+        "href": "/blog/why-jerry-joined-natural",
+        "date": "September 14, 2026",
+        "author": "Jerry Lu",
+        "category": "Team",
+        "image": {
+          "assetRole": "photo.blog-hero",
+          "src": "/assets/images/blog/why-jerry-joined-natural/jerry-blog-hero.jpg",
+          "alt": "Unapologetically non-normal",
+          "generationMode": "reuse-existing"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.post-index",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "filters": {
+          "options": [
+            "All",
+            "Team",
+            "Natural",
+            "Research"
+          ],
+          "selected": "All"
+        },
+        "posts": [
+          {
+            "title": "Unapologetically non-normal",
+            "desc": "Jerry Lu joins Natural as Founding GTM hire from Maveron",
+            "author": "Jerry Lu",
+            "date": "September 14, 2026",
+            "href": "/blog/why-jerry-joined-natural",
+            "image": {
+              "assetRole": "photo.blog-hero",
+              "src": "/assets/images/blog/why-jerry-joined-natural/jerry-blog-hero.jpg",
+              "alt": "",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "Something out of nothing",
+            "desc": "David Yi joins Natural as Founding Talent hire from Ramp",
+            "author": "David Yi",
+            "date": "August 31, 2026",
+            "href": "/blog/why-david-joined-natural",
+            "image": {
+              "assetRole": "photo.blog-hero",
+              "src": "/assets/images/blog/why-david-joined-natural/david-blog-hero.jpg",
+              "alt": "",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "Rational actors",
+            "desc": "Kishan Sripada joins Natural as an Engineer from Orange Slice (YC S25)",
+            "author": "Kishan Sripada",
+            "date": "August 24, 2026",
+            "href": "/blog/why-kishan-joined-natural",
+            "image": {
+              "assetRole": "photo.blog-hero",
+              "src": "/assets/images/blog/why-kishan-joined-natural/kishan-blog-hero.jpg",
+              "alt": "",
+              "generationMode": "reuse-existing"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "conversion.newsletter",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "heading": "The next post in your inbox",
+        "placeholder": "hi@natural.com"
+      }
+    },
+    {
+      "type": "section",
+      "section": "chrome.footer",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {}
+    }
+  ]
+}

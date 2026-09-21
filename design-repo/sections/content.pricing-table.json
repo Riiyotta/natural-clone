@@ -1,0 +1,44 @@
+{
+  "id": "content.pricing-table",
+  "category": "content",
+  "name": "Pricing table",
+  "purpose": "The full /pricing matrix: a sticky category nav beside grouped rows, each row a product and its price across three tiers.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "nav": {
+        "type": "array", "minItems": 1, "maxItems": 8,
+        "items": { "additionalProperties": false, "properties": { "heading": { "type": "string", "maxWords": 4 }, "tabs": { "type": "array", "items": { "additionalProperties": false, "properties": { "id": { "type": "string" }, "label": { "type": "string", "maxWords": 4 } }, "required": ["id", "label"] } } }, "required": ["heading", "tabs"] }
+      },
+      "groups": {
+        "type": "array", "minItems": 1, "maxItems": 10,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "title": { "type": "string", "maxWords": 4 },
+            "items": {
+              "type": "array", "minItems": 1, "maxItems": 20,
+              "items": {
+                "additionalProperties": false,
+                "properties": {
+                  "id":   { "type": "string" },
+                  "name": { "type": "string", "maxWords": 4 },
+                  "desc": { "type": "string", "maxWords": 16 },
+                  "cells": { "type": "array", "minItems": 3, "maxItems": 3, "items": { "additionalProperties": false, "properties": { "tier": { "type": "enum", "values": ["Consumer", "Business", "Enterprise"] }, "amounts": { "type": "array", "items": { "type": "object" } } }, "required": ["tier", "amounts"] } }
+                },
+                "required": ["id", "name", "desc", "cells"]
+              }
+            }
+          },
+          "required": ["title", "items"]
+        }
+      }
+    },
+    "required": ["nav", "groups"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "navVisible": false, "note": "the sticky category nav is display:none on mobile, matching live" }, "desktop": { "navVisible": true, "navWidth": "240px", "navStickyTop": "100px" } },
+  "complianceNote": "Every price string here is a REAL published price of a real financial product. A generated page must not reproduce these figures, and must not invent plausible-looking variations of them.",
+  "measuredFrom": "src/pages/Pricing.jsx:398-429, src/pages/Pricing.jsx:50-281"
+}

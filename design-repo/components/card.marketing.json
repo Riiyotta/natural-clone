@@ -1,0 +1,26 @@
+{
+  "id": "card.marketing",
+  "layer": "component",
+  "name": "Marketing benefit card",
+  "purpose": "The site's workhorse 3-up card: a fixed-height visual panel on top, a title and a one-line body beneath. Used by the Home 'Benefits' sections and by all 10 product routes' feature grid.",
+  "composes": [],
+  "content": {
+    "title":  { "type": "string", "required": true, "maxWords": 6 },
+    "body":   { "type": "string", "required": true, "maxWords": 22 },
+    "visual": { "type": "visual", "required": true, "oneOf": ["assetRole media reference", "an inline generated visual (chart/terminal/icon-grid)"] }
+  },
+  "style": {
+    "radius": "radius.md", "padding": "space.20", "gap": "space.20",
+    "border": "border.card", "background": "surface.page",
+    "desktopHeight": "400px", "visualHeight": "240px",
+    "titleType": "type.h3", "bodyType": "type.body", "bodyColor": "text.secondary"
+  },
+  "responsive": {
+    "mobile":  { "columns": 1, "cardHeight": "auto", "note": "the card height floor is md:-gated; on mobile the card sizes to content" },
+    "desktop": { "columns": 3, "cardHeight": "400px", "gap": "space.40" }
+  },
+  "variants": {
+    "clamped": { "note": "the product-route variant clamps the body to 2 lines and justifies content space-between", "measuredFrom": "src/pages/ProductPage.jsx:82-91" }
+  },
+  "measuredFrom": "src/components/BenefitsSpeed.jsx:113-125"
+}

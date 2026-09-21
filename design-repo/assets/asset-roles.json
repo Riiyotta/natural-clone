@@ -1,0 +1,136 @@
+{
+  "$schema-note": "This file is the single source of truth for the closed `assetRole` enum. The same id list appears in schema/pagespec.schema.json (definitions.assetRole.enum) and in tokens/llm/component-allowlist.json (assetRoles). extraction/verify_all.py enforces that all three agree; a role added to one and not the others fails the run.",
+  "version": "1.0.0",
+  "sourceIsRealCompany": true,
+  "complianceBanner": "natural.com is a REAL, LIVE company's website. Every string of copy in this design-repo was transcribed verbatim from it, and every file under the clone's public/assets/ is a real downloaded brand asset belonging to Natural AI, Inc. Nothing in this design-repo grants any license to that material. The rules in `globalProhibitions` below are not style guidance — they are hard constraints on anything an AI generates from this repo.",
+  "globalProhibitions": [
+    "NEVER reproduce, redraw, recolor, or approximate Natural's real wordmark or logo in generated output. The `brand.wordmark` role exists to describe where a mark sits, not to license reuse.",
+    "NEVER reproduce, or generate a lookalike of, a real employee, customer, investor, or founder photograph. Every portrait in this repo is a photograph of a real identifiable person.",
+    "NEVER reproduce a real third-party company's logo (Eight Sleep, Whoop, Equinox, or any investor firm's mark). The site itself renders investor marks as a GENERIC placeholder glyph, and a generated page must do the same or omit the mark entirely.",
+    "NEVER present Natural's verbatim marketing copy, product claims, pricing, FDIC/legal disclosures, or investor quotes as the generated page's own content. The copy in schema/example.pagespec.json is evidence of the site's real voice and length budgets — it is not reusable text.",
+    "NEVER fabricate a regulatory, banking, or FDIC-insurance claim. The site's disclosures name a real bank (Column N.A.) and a real insurance mechanism; inventing a variation of these is a legal risk, not a copy choice.",
+    "This design-repo must NOT be published, open-sourced, or made a public repository."
+  ],
+  "aiGenerationVocabulary": {
+    "may-generate-new": "An AI may synthesise a brand-new asset for this role, as long as it matches the documented visual treatment. No real-world referent is implied.",
+    "must-reuse-exact": "An AI must reference the existing asset path unchanged. It may not regenerate, restyle, crop, or recolor it.",
+    "must-not-fabricate": "An AI may reference the existing asset path if and only if the generated page is a faithful reconstruction of this same site. It must NEVER synthesise a substitute, because any substitute would be a fabricated depiction of a real person, a real brand, or a real regulated entity."
+  },
+  "roles": {
+    "brand.wordmark": {
+      "description": "Natural's logotype in the navbar and footer.",
+      "realAsset": "/assets/brand/natural-logo.svg",
+      "renderedAt": "16px tall, width auto",
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "Natural AI, Inc. trademark. Not licensed for reuse or imitation. A generated page for a DIFFERENT brand must substitute that brand's own mark or a neutral placeholder — never a variation of this one.",
+      "measuredFrom": "src/components/Footer.jsx:99"
+    },
+    "photo.hero-product": {
+      "description": "The large product screenshot at the top of each of the 10 product routes, and the scroll-revealed dashboard on the homepage hero.",
+      "realAssets": ["/assets/images/products/wallets-hero.jpg", "/assets/images/products/vault-hero.jpg", "/assets/images/products/pay-hero.jpg", "/assets/images/products/request-hero.jpg", "/assets/images/products/transfer-hero.jpg", "/assets/images/products/connect-hero.jpg", "/assets/images/products/identity-hero.jpg", "/assets/images/products/observability-hero.jpg", "/assets/images/products/disputes-hero.jpg", "/assets/images/products/compliance-hero.jpg", "/assets/images/products/hero-dashboard.jpg"],
+      "renderedAt": "174px mobile / 640px desktop, object-cover, radius.md",
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "These are screenshots of Natural's real, unreleased product UI. Do not reproduce them and do not synthesise a fake product UI that could be mistaken for Natural's.",
+      "measuredFrom": "src/pages/ProductPage.jsx:67-69"
+    },
+    "photo.feature-graphic": {
+      "description": "The 3-up feature-card illustrations on each product route.",
+      "realAssetPattern": "/assets/images/products/{slug}-graphic-*.jpg",
+      "count": 28,
+      "renderedAt": "204px mobile / 240px desktop, object-cover, radius.sm",
+      "aiGuidance": "may-generate-new",
+      "licensing": "These are abstract product illustrations with no real person or third-party mark in them. A generated page may synthesise replacements in the same soft, desaturated, photographic-abstract register. It may NOT reuse Natural's originals for a non-Natural brand.",
+      "measuredFrom": "src/pages/productContent.js:18"
+    },
+    "photo.splash": {
+      "description": "The brand splash photograph under the final CTA and mid-page on /about; the team photograph mid-page on /careers.",
+      "realAssets": ["/assets/images/brand/nature-desk.jpg", "/assets/images/team/team-image.jpg"],
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "nature-desk.jpg is Natural's commissioned brand photography. team-image.jpg depicts real, identifiable Natural employees. Neither may be reproduced, and no lookalike may be generated.",
+      "measuredFrom": "src/components/FinalCta.jsx:66, src/pages/Careers.jsx:174-177"
+    },
+    "texture.overlay": {
+      "description": "The four blended texture films stacked over every splash photograph.",
+      "realAssets": ["/assets/textures/splash/paper.jpg", "/assets/textures/splash/print-medium.jpg", "/assets/textures/splash/scan.jpg", "/assets/textures/splash/grain.jpg"],
+      "blendOrder": ["multiply", "overlay", "screen", "soft-light"],
+      "aiGuidance": "must-reuse-exact",
+      "licensing": "Generic scanned-paper/grain films carrying no brand identity. Reference the four paths unchanged; the ordered blend stack is the design, and substituting or reordering films breaks it.",
+      "measuredFrom": "src/components/FinalCta.jsx:20-25"
+    },
+    "portrait.agent": {
+      "description": "The square portrait used for the fictional agent 'Penny' in the Control card and the Home benefit card.",
+      "realAsset": "/assets/images/agents/penny-avatar.jpg",
+      "renderedAt": "48px (6px radius) in the benefit card; 160px (radius.lg) in the Control card",
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "Although the agent persona is fictional, the image is a real photograph sourced by Natural. Do not reproduce it and do not generate a substitute portrait, which would be a synthetic depiction of a person.",
+      "measuredFrom": "src/components/Control.jsx:137-142"
+    },
+    "portrait.owner": {
+      "description": "The 18px circular avatar of the agent's human owner in the Control card.",
+      "realAsset": "/assets/images/home/control-owner-avatar.png",
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "A photograph of a person. Same rule as portrait.agent.",
+      "measuredFrom": "src/components/Control.jsx:156-160"
+    },
+    "portrait.team": {
+      "description": "Photographs of Natural employees on the /careers team-quote cards.",
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "Real, identifiable employees of a real company. Never reproduce, never generate a lookalike, and never attach a generated quote to a real person's face.",
+      "measuredFrom": "src/pages/Careers.jsx:38-56"
+    },
+    "photo.blog-hero": {
+      "description": "The hero image for a blog post, used on the homepage Blog section and the /blog index.",
+      "realAssetPattern": "/assets/images/blog/{slug}/{slug}-hero.jpg",
+      "count": 33,
+      "renderedAt": "16:9 mobile; 1200:560 featured / 200px item on desktop",
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "A large share of these are portrait photographs of named, real Natural employees (the 'why X joined Natural' series). Treat the whole set as must-not-fabricate rather than auditing which individual files contain a face.",
+      "measuredFrom": "src/components/Blog.jsx:1-20"
+    },
+    "icon.product": {
+      "description": "The 8 monochrome product glyphs in the Home icon grid.",
+      "realAssetPattern": "/assets/icons/agents/{name}.svg",
+      "values": ["bank-account", "wallet", "shield", "people", "deposit", "withdraw", "card", "agent"],
+      "renderedAt": "24px glyph inside a 60px tile",
+      "aiGuidance": "may-generate-new",
+      "licensing": "Generic single-color financial glyphs carrying no brand identity. A generated page may synthesise equivalents in the same weight.",
+      "measuredFrom": "src/components/BenefitsSpeed.jsx:58-67"
+    },
+    "icon.verified": {
+      "description": "The badge glyph beside a verified agent name.",
+      "realAsset": "/assets/icons/agents/verified.svg",
+      "note": "Rendered as an <img> in the Home benefit card but as an INLINE <svg> tinted accent.verified in the Control card — two real, different treatments of the same mark.",
+      "aiGuidance": "may-generate-new",
+      "licensing": "A generic checkmark-in-a-seal. No brand identity.",
+      "measuredFrom": "src/components/BenefitsSpeed.jsx:49, src/components/Control.jsx:42-52"
+    },
+    "decor.logo-placeholder": {
+      "description": "The generic circle-and-plus glyph the investor cards render INSTEAD of a real investor firm's logo.",
+      "implementation": "inline SVG, 32px, currentColor",
+      "aiGuidance": "must-reuse-exact",
+      "licensing": "This role exists specifically to AVOID reproducing real venture-firm marks. Substituting a real logo here is a direct violation of globalProhibitions. Keep the placeholder or omit the glyph.",
+      "measuredFrom": "src/components/Investors.jsx:39-46"
+    },
+    "logo.partner": {
+      "description": "Third-party wellness-partner logos on the /careers Perks section.",
+      "realAssets": ["/images/careers/eight-sleep-logo.svg", "/images/careers/whoop-logo.svg", "/images/careers/equinox-logo.png"],
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "Trademarks of Eight Sleep, WHOOP, and Equinox — third parties with no relationship to this design-repo. Never reproduce, redraw, or generate a variation. A generated page should omit partner logos entirely unless it has its own real, licensed partners.",
+      "measuredFrom": "src/pages/Careers.jsx:66-71"
+    },
+    "photo.section-graphic": {
+      "description": "Full-bleed background photographs behind an interactive stage (the Flows tab stage; the Developers explorer panel), plus the small floating card images that sit on top of the Flows stage.",
+      "realAssets": ["/assets/images/products/flows-background.jpg", "/assets/images/home/developers-background.png", "/assets/images/products/flows-hold.jpg", "/assets/images/products/flows-move.jpg", "/assets/images/products/flows-accept.jpg", "/assets/images/products/flows-issue.jpg"],
+      "aiGuidance": "may-generate-new",
+      "licensing": "Abstract photographic backdrops. The four flows-* card images depict product UI and are closer to photo.hero-product in sensitivity — do not reproduce those as a real Natural product; synthesise a neutral card if a replacement is needed.",
+      "measuredFrom": "src/components/Flows.jsx:72-89, src/components/Developers.jsx:110-116"
+    },
+    "photo.trust-badge": {
+      "description": "The FDIC coverage card image, reused on the Home 'Scale' section and on the /wallet and /vault product routes.",
+      "realAsset": "/assets/images/benefits/fdic-card.jpg",
+      "aiGuidance": "must-not-fabricate",
+      "licensing": "This image asserts a real regulatory insurance claim tied to a real bank partnership. Reproducing it, or generating a variation asserting FDIC coverage, is a regulatory-misrepresentation risk. Omit it.",
+      "measuredFrom": "src/components/BenefitsScale.jsx:76-80"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "$description": "Rhythm and adjacency rules JSON Schema cannot express. Every rule below was checked against templates/templates.json's ACTUAL node sequences at the moment it was written (MASTER-GUIDE 3.18) \u2014 the exceptions listed are real templates that genuinely violate the blanket rule, not hypotheticals. Each rule id here has a matching implementation in schema/semantic_validate.py; extraction/verify_all.py enforces that the two lists stay in sync.",
+  "version": "1.0.0",
+  "rules": [
+    {
+      "id": "ONE_HERO_PER_PAGE",
+      "severity": "error",
+      "description": "A PageSpec may contain at most one section in the `hero` category.",
+      "exceptions": [
+        "form.single"
+      ],
+      "exceptionReason": "form.single has NO hero at all \u2014 /contact's entire body is conversion.contact-form. The rule is therefore 'at most one', and zero is legal for this template specifically. Verified against templates.json: form.single's nodes contain no hero.* section."
+    },
+    {
+      "id": "HERO_MUST_BE_FIRST_CONTENT",
+      "severity": "error",
+      "description": "When a hero is present it must be the first node after chrome.navbar.",
+      "exceptions": [
+        "form.single"
+      ],
+      "exceptionReason": "No hero to position."
+    },
+    {
+      "id": "NAVBAR_FIRST_FOOTER_LAST",
+      "severity": "error",
+      "description": "Every PageSpec must open with chrome.navbar and close with chrome.footer. These are mounted outside the router in the real app, so no route can omit or reposition them.",
+      "exceptions": []
+    },
+    {
+      "id": "FINAL_CTA_PRECEDES_FOOTER",
+      "severity": "error",
+      "description": "When conversion.final-cta is present it must be the last node before chrome.footer.",
+      "exceptions": [],
+      "note": "Applies conditionally \u2014 two templates legitimately omit the section entirely (see FINAL_CTA_OPTIONAL_TEMPLATES)."
+    },
+    {
+      "id": "FINAL_CTA_OPTIONAL_TEMPLATES",
+      "severity": "warn",
+      "description": "Most templates close on conversion.final-cta. Two do not, by design.",
+      "exceptions": [
+        "index.posts",
+        "form.single"
+      ],
+      "exceptionReason": "index.posts closes on conversion.newsletter instead. form.single has no closing section at all \u2014 /contact was confirmed live to have no .splash element and to load no nature-desk.jpg. Verified against templates.json: neither template's nodes contain conversion.final-cta."
+    },
+    {
+      "id": "NO_CONSECUTIVE_SAME_SECTION",
+      "severity": "error",
+      "description": "The same section id may not appear in two adjacent positions.",
+      "exceptions": [],
+      "note": "home.landing does use content.card-grid twice, but at positions 2 and 6 \u2014 never adjacent. This rule keys on (section, variant) so a future page legitimately repeating a section with a different variant is still checked positionally rather than blanket-rejected."
+    },
+    {
+      "id": "CARD_GRID_MAX_TWO",
+      "severity": "error",
+      "description": "content.card-grid may appear at most twice on one page.",
+      "exceptions": [],
+      "evidence": "Two is the real observed maximum, on home.landing ('Move at agent speed' and 'Scale with confidence'). Every other template uses it once or not at all. This is a measured ceiling, not an invented one."
+    },
+    {
+      "id": "ONE_PER_PAGE_SECTIONS",
+      "severity": "error",
+      "description": "Sections whose contract declares onePerPage may appear at most once.",
+      "appliesTo": [
+        "chrome.navbar",
+        "chrome.footer",
+        "hero.scroll-dashboard",
+        "hero.centered-statement",
+        "hero.left-statement",
+        "hero.product",
+        "hero.blog-featured",
+        "interactive.tab-stage",
+        "interactive.code-explorer",
+        "content.split-feature",
+        "social.investor-wall",
+        "content.blog-teaser",
+        "conversion.final-cta",
+        "content.splash-story",
+        "conversion.open-roles",
+        "content.post-index",
+        "conversion.newsletter",
+        "conversion.contact-form",
+        "content.pricing-table"
+      ],
+      "exceptions": []
+    },
+    {
+      "id": "HOME_ROUTE_ONLY_SECTIONS",
+      "severity": "error",
+      "description": "hero.scroll-dashboard may only appear on the `/` route.",
+      "appliesTo": [
+        "hero.scroll-dashboard"
+      ],
+      "exceptions": [],
+      "evidence": "The scroll-scrubbed hero is implemented in src/components/Hero.jsx and rendered only by src/pages/Home.jsx. No other page imports it."
+    },
+    {
+      "id": "TEMPLATE_NODE_SEQUENCE_MATCH",
+      "severity": "error",
+      "description": "A PageSpec's nodes must be a valid SUBSEQUENCE of its declared template's node list: every required node present, in order, with no node the template does not declare. This is the cross-reference between the `template` field and `nodes[]` \u2014 validating nodes[] in isolation is the single most repeated bug class in this methodology (MASTER-GUIDE 3.3).",
+      "exceptions": []
+    },
+    {
+      "id": "MOTION_REQUIRES_REDUCED_FALLBACK",
+      "severity": "error",
+      "description": "Every node's motion object must declare a reducedMotionFallback, and the value must be one the section's own contract allows.",
+      "exceptions": []
+    },
+    {
+      "id": "MOTION_BUDGET",
+      "severity": "warn",
+      "description": "At most 3 nodes per page may use a non-`none` motion pattern.",
+      "exceptions": [],
+      "evidence": "home.landing, the most animated page on the site, has 5 non-`none` motion nodes: chrome.navbar (entrance-stagger), hero.scroll-dashboard (scroll-scrub-reveal), interactive.tab-stage and interactive.code-explorer (opacity-crossfade), and social.investor-wall (filter-collapse). The real homepage therefore WARNS against this budget. That is deliberate and verified by running the validator against schema/fixtures/home.landing.pagespec.json: the budget is advisory, and the honest calibration is that the site's busiest page sits above it. Every other template is at or under 2."
+    },
+    {
+      "id": "ASSET_ROLE_CLOSED",
+      "severity": "error",
+      "description": "Every media reference must carry an assetRole drawn from the closed enum in assets/asset-roles.json. A bare image path or an invented role id is rejected.",
+      "exceptions": []
+    },
+    {
+      "id": "NO_FABRICATED_BRAND_ASSETS",
+      "severity": "error",
+      "description": "A node may not reference an assetRole whose aiGuidance is `must-not-fabricate` while also declaring a generated/synthesised asset. Compliance rule \u2014 see assets/asset-roles.json globalProhibitions.",
+      "exceptions": []
+    },
+    {
+      "id": "SECTION_REQUIRED_FIELDS",
+      "severity": "error",
+      "description": "Every field in a section contract's own `content.required` list must be present on the node. JSON Schema cannot express this (its per-section branches only const-lock motion), so semantic_validate.py enforces it.",
+      "exceptions": [],
+      "provenance": "Added after a second-pass recheck found a control fixture silently missing two required CTA fields on interactive.tab-stage, because nothing cross-referenced each contract's own required list. The gap was in the validator, not just the fixture."
+    },
+    {
+      "id": "SECTION_CLOSED_CONTENT",
+      "severity": "error",
+      "description": "A section contract declaring `additionalProperties: false` rejects any content field it does not declare, closing the same hole at the content layer that the schema closes at the node layer.",
+      "exceptions": []
+    }
+  ]
+}

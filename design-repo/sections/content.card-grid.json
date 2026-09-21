@@ -1,0 +1,24 @@
+{
+  "id": "content.card-grid",
+  "category": "content",
+  "name": "Eyebrow + heading + 3-up card grid",
+  "purpose": "The site's most-reused content shape by far: a section header over exactly three marketing cards. Used twice on the homepage and once on each of the 10 product routes.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 8 },
+      "cards":   { "type": "array", "minItems": 3, "maxItems": 3, "items": { "$ref": "components/card.marketing" } }
+    },
+    "required": ["eyebrow", "heading", "cards"]
+  },
+  "constraints": { "maxPerPage": 2, "noConsecutive": false, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "constraintNote": "noConsecutive is deliberately FALSE. The homepage really does place two card grids on one page (BenefitsSpeed 'Move at agent speed' and BenefitsScale 'Scale with confidence'), separated by other sections. maxPerPage is 2 because that is the real observed maximum, not an invented cap.",
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "columns": 1, "cardHeight": "auto" }, "desktop": { "columns": 3, "cardHeight": "400px", "gap": "space.40" } },
+  "variants": {
+    "generated-visuals": { "note": "the homepage variants, whose card visuals are inline components (terminal-block, stat-chart, icon-grid) rather than image assets", "measuredFrom": "src/components/BenefitsSpeed.jsx:87-102" },
+    "asset-visuals": { "note": "the product-route variant, whose three cards each carry a photo.feature-graphic and clamp the body to 2 lines", "measuredFrom": "src/pages/ProductPage.jsx:78-95" }
+  },
+  "measuredFrom": "src/components/BenefitsSpeed.jsx:106-128, src/components/BenefitsScale.jsx:96-118, src/pages/ProductPage.jsx:73-97"
+}

@@ -1,0 +1,22 @@
+{
+  "id": "hero.blog-featured",
+  "category": "hero",
+  "name": "Featured-post hero",
+  "purpose": "Opens /blog by giving the single most recent post the full hero slot — title, wide image, and a date/author/category meta row — all inside one link.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "title":    { "type": "string", "maxWords": 8 },
+      "href":     { "type": "string" },
+      "date":     { "type": "string", "maxWords": 3 },
+      "author":   { "type": "string", "maxWords": 4 },
+      "category": { "type": "string", "maxWords": 2 },
+      "image":    { "type": "assetRef", "assetRole": "photo.blog-hero" }
+    },
+    "required": ["title", "href", "date", "author", "category", "image"]
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "maxPerPage": 1 },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "aspect": "16/9", "gap": "space.24" }, "desktop": { "aspect": "1200/600", "gap": "space.40" } },
+  "measuredFrom": "src/pages/Blog.jsx:72-90"
+}

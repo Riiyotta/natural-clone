@@ -1,0 +1,137 @@
+{
+  "$description": "The citation trail. Every design decision in this repo cites a real file:line span in the cloned source tree, which sits OUTSIDE this package as a sibling of design-repo/. These paths are build-time evidence, NOT part of this delivery — extraction/verify_all.py resolves them when a sibling source tree is present and WARNS (never fails) when it is not, so a standalone design-repo.zip still verifies clean. registry.manifest.json's entryPoints deliberately lists nothing from here.",
+  "version": "1.0.0",
+  "sourceProject": {
+    "name": "Natural (natural.com clone)",
+    "relativeRoot": "..",
+    "isGitRepository": false,
+    "framework": "React 19 + Vite 8 + Tailwind CSS v3 + react-router-dom v7",
+    "frameworkVersionsMeasuredFrom": "package.json:12-25",
+    "linter": "oxlint",
+    "buildCommand": "npm run build",
+    "lintCommand": "npm run lint",
+    "note": "A design-repo is a SNAPSHOT. If the source project is upgraded after this build, these version claims go stale with nothing re-checking them. Re-diff them against the real package.json before trusting them (BUILD-GUIDE 2.9)."
+  },
+  "evidenceTiers": {
+    "measured": "Read directly out of the clone's source, or measured on the live site with Playwright. The default tier.",
+    "measured-live-multi-viewport": "Measured on the live site at several viewport sizes, so a viewport-relative formula could be fitted rather than a single pixel value recorded.",
+    "asserted-unverified": "Present in the source or in a groundwork doc, but never independently re-measured. Flagged, not silently promoted."
+  },
+  "groundworkDocuments": {
+    "$note": "Pre-existing recon docs in the source project. Treated as a strong first draft, NOT gospel (BUILD-GUIDE 0). Where they disagree with the real source, the real source wins and the disagreement is recorded in `clone_spec_disagreements` below.",
+    "CLONE_SPEC.md": { "lines": 450, "role": "the main design/measurement spec from the recon pass" },
+    "ASSET_MANIFEST.md": { "lines": 75, "role": "asset inventory, homepage-scope only" },
+    "PROCESS.md": { "lines": 258, "role": "cloning process notes" },
+    "reference/": { "role": "7 live screenshots (desktop/mobile full+top, 3 hero scroll positions)" }
+  },
+  "clone_spec_disagreements": [
+    {
+      "claim": ".hero-dashboard-sticky is 820px tall",
+      "claimedIn": "CLONE_SPEC.md:186",
+      "status": "FALSE — superseded",
+      "correction": "Every desktop hero dimension tracks viewport HEIGHT and is independent of viewport width: sticky = 100vh - 80px, .landing-hero = 100vh - 240px, clip y = 100vh - 384px, live's declared anchor top = 50vh - 40px. Mobile: wrapper = sticky = inner = 100vh - 32px, .landing-hero = 100vh - 80px, clip y = 100vh - 542px.",
+      "evidence": "Measured on live with Playwright at desktop 1280/1440/1600/1920 x 700/800/900/1080 and mobile 375x667, 390x700, 390x844, 390x900, 430x932, 768x1024. Every formula held exactly with zero residual. 820px is only correct at viewport height 900 — the one height the clone had historically been spot-checked at; at 1080 the hero was 180px short.",
+      "tier": "measured-live-multi-viewport",
+      "nowRecordedIn": ["tokens/30-layout/layout.json#heroGeometry", "sections/hero.scroll-dashboard.json"],
+      "sourceOfTruth": "src/index.css:253-290 and src/index.css:381-426, which carry the corrected rules with explanatory comments"
+    },
+    {
+      "claim": "the pinned hero has a fixed 2060px scroll range",
+      "claimedIn": "CLONE_SPEC.md:183, repeated at CLONE_SPEC.md:420",
+      "status": "UNRESOLVED — asserted, not re-measured, and internally inconsistent with the corrected rules",
+      "detail": "src/components/Hero.jsx:68 still hardcodes `height: 2060` on the outer wrapper, and src/index.css:245 still repeats the 2060px figure in a comment. Unlike the sticky/landing-hero/clip dimensions, this number was NOT re-measured across viewport heights during the correction pass. It cannot be simultaneously true that the sticky is 100vh-80px AND the scroll range is a fixed 2060px: the usable range (heroHeight - viewportHeight, per src/components/Hero.jsx:39) then varies with viewport height rather than being constant. This is the same hardcoding mistake the 820px claim was, one layer up, and it survives in the live source.",
+      "tier": "asserted-unverified",
+      "recommendation": "Re-measure the live outer-wrapper height at several viewport heights before encoding 2060 anywhere as a constant. This repo records it as UNRESOLVED rather than promoting it to measured.",
+      "nowRecordedIn": ["tokens/30-layout/layout.json#heroGeometry.scrollRange"]
+    },
+    {
+      "claim": "a stale '(820px)' parenthetical survives in a code comment",
+      "claimedIn": "src/index.css:296",
+      "status": "residual stale comment in the SOURCE, not in this design-repo",
+      "detail": "The comment on .hero-dashboard-shader-clip's flex-shrink rule still reads 'a flex child of the fixed-height (820px) hero column' even though the rule 34 lines above it was corrected to calc(100vh - 240px). The CSS itself is correct; only the prose is stale. Recorded here because a reader of that file could reasonably re-derive the wrong 820px claim from it. Not fixed: the cloned site's source is read-only for this build.",
+      "tier": "measured"
+    },
+    {
+      "claim": "four product routes (/identity, /observability, /disputes, /compliance) have no eyebrow above the h2",
+      "claimedIn": "an earlier extraction pass, recorded and rebutted at src/pages/productContent.js:1-5",
+      "status": "FALSE — already corrected in the source before this build",
+      "correction": "ALL 10 product routes carry an eyebrow. The four observed values are 'Accounts', 'Money movement', 'Developer & billing' and 'Features'. The wrong claim came from inferring presence out of DOM node counts rather than reading the text.",
+      "evidence": "src/pages/productContent.js declares a non-empty `eyebrow` on all 10 entries; verified by reading every entry, not by counting.",
+      "tier": "measured",
+      "nowRecordedIn": ["templates/templates.json#product.feature.contentInvariants"]
+    },
+    {
+      "claim": "the eyebrow token is 12px/16px decorative, possibly uppercase",
+      "claimedIn": "CLONE_SPEC.md:43 (the --text-decorative row)",
+      "status": "superseded by a later re-measurement inside the same document and by the real CSS",
+      "correction": "The rendered eyebrow is 15px/24px, rgb(113,112,111), no uppercase, no letter-spacing. CLONE_SPEC.md's own row already hedges ('measured eyebrow paragraph: 15px/24px ... so verify per-section'), and src/index.css:90-98 records the correction explicitly.",
+      "tier": "measured",
+      "sourceOfTruth": "src/index.css:91-98"
+    },
+    {
+      "claim": "CLONE_SPEC.md section 0 lists a large type scale (--text-display 28/40, --text-h2 16/24, --text-body-2 13/18, --text-mono 14/20 at weight 410, --text-decorative 12/16) as the site's tokens",
+      "claimedIn": "CLONE_SPEC.md:33-45",
+      "status": "partially inapplicable to the clone",
+      "detail": "Those are CSS custom properties read off the live site's design system, several of which the clone never instantiates. tokens/00-foundation/typography.json deliberately records only the sizes actually used in the clone's own JSX and CSS, so a generator cannot reference a scale step that has no rendered example anywhere.",
+      "tier": "measured"
+    },
+    {
+      "claim": "ASSET_MANIFEST.md is a complete asset inventory",
+      "claimedIn": "ASSET_MANIFEST.md (whole file)",
+      "status": "incomplete by scope, not wrong",
+      "detail": "It inventories the HOMEPAGE only (it says so: 'while recon-ing the homepage'). The real public/assets tree holds 33 blog hero images, 28 product feature graphics, 10 product hero images, 4 splash textures and 3 third-party partner logos that it never lists. assets/asset-roles.json was built by enumerating the real directory, not by trusting this file.",
+      "tier": "measured",
+      "evidence": "find public -type f, cross-checked against every image reference in src/"
+    },
+    {
+      "claim": "the site uses no max-width container; sections are full-width",
+      "claimedIn": "CLONE_SPEC.md:113-114",
+      "status": "true of the LIVE site's CSS classes, misleading about the clone",
+      "detail": "The clone implements the same rendered geometry with explicit max-w-[1280px] section wrappers and max-w-[1200px] content columns. The measured 1200px content width and 40px desktop gutter agree; only the mechanism differs.",
+      "tier": "measured",
+      "sourceOfTruth": "src/components/BenefitsSpeed.jsx:107"
+    }
+  ],
+  "structuralNotes": [
+    {
+      "note": "The clone is NOT a git repository. There is no .git directory, so there is no gitignore enforcement to rely on for keeping design-repo.zip out of version control. The zip is generated fresh and last, but nothing automated prevents it being committed if the project is later git-init'd.",
+      "tier": "measured"
+    },
+    {
+      "note": "chrome.navbar and chrome.footer are mounted OUTSIDE <Routes> in src/App.jsx, so they render on every route and no route can omit them. They are therefore listed in every template's node sequence, and their content contracts are deliberately empty.",
+      "tier": "measured",
+      "evidence": "src/App.jsx:28 and src/App.jsx:42"
+    },
+    {
+      "note": "There are 16 routes and zero dead routes — every <Route> has a real page component and every page component is routed. This is unusual enough to be worth stating: sibling projects in this methodology have shipped routers with unmounted routes behind real page files.",
+      "tier": "measured",
+      "evidence": "src/App.jsx:30-40"
+    },
+    {
+      "note": "24 link targets in the site's own nav and footer have NO route (/signup, /login, /direct, /accept, /cards, /credit, /voice, /bill, /charge, /join-slack, /nsa, /privacy, /aup, /disclosures, every /blog/<slug>, plus external docs/status/social URLs). These are real dangling links in the clone, enumerated in templates/routes.json#unroutedLinkTargets rather than silently normalised away.",
+      "tier": "measured"
+    },
+    {
+      "note": "No form on the site submits anywhere. /contact and the /blog newsletter both call preventDefault and nothing else; the newsletter's submit button is permanently disabled. This is a deliberate no-outbound-request property of the clone and is recorded on both section contracts.",
+      "tier": "measured",
+      "evidence": "src/pages/Contact.jsx:23-25, src/pages/Blog.jsx:139"
+    },
+    {
+      "note": "The site ships exactly one theme. There is no prefers-color-scheme rule, no dark: variant and no [data-theme] selector anywhere in src/ — verified by grep returning 0 matches. The schema's theme enum is closed to ['light'] accordingly.",
+      "tier": "measured"
+    },
+    {
+      "note": "Tailwind declares md/lg/xl breakpoints but no component uses an lg: or xl: layout variant — md: (768px) is the only breakpoint actually exercised. Verified by grep.",
+      "tier": "measured"
+    },
+    {
+      "note": "The forward-arrow icon is redeclared locally in 11 separate components rather than imported from one module. This is real, deliberate duplication in the source, recorded so a generator does not invent a shared icon module that does not exist.",
+      "tier": "measured"
+    },
+    {
+      "note": "CLONE_SPEC.md:438-450 ('Things NOT fully verified') itself flags the intermediate breakpoint, the 3 non-default Flows tab images, the full investor quote set, the scroll-scrub keyframe math, and the volume-chart visual as unverified at recon time. Four of those five have since been resolved in the source (the Flows images, the quotes and the chart are all now concretely implemented; the scroll-scrub math is implemented and commented). The breakpoint remains an inference. Recorded so the honest evidence level of each is preserved rather than flattened.",
+      "tier": "measured"
+    }
+  ],
+  "concurrencyNote": "src/index.css and src/components/Hero.jsx may be edited concurrently by another process. Every conclusion in this file that depends on those two files was re-checked against their current state immediately before this build was reported done (MASTER-GUIDE 3.11 / 3.20). The specific keywords re-grepped were '820', '2060' and 'hero-dashboard-sticky'."
+}

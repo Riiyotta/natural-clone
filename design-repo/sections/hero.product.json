@@ -1,0 +1,22 @@
+{
+  "id": "hero.product",
+  "category": "hero",
+  "name": "Product route hero",
+  "purpose": "The opening block of all 10 product routes: a short product name, a three-sentence positioning paragraph, a CTA pair, and a wide product screenshot.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "heading":      { "type": "string", "maxWords": 2 },
+      "body":         { "type": "string", "maxWords": 45 },
+      "primaryCta":   { "$ref": "primitives/button.pill-primary" },
+      "secondaryCta": { "$ref": "primitives/button.pill-ghost" },
+      "heroAsset":    { "type": "assetRef", "assetRole": "photo.hero-product" }
+    },
+    "required": ["heading", "body", "primaryCta", "secondaryCta", "heroAsset"]
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "maxPerPage": 1 },
+  "motion": { "allowed": ["entrance-fade-up"], "reducedMotionFallback": "none", "detail": "Only the body paragraph carries an entrance class (delay 250ms, duration 500ms, distance 12px, ease-out). The heading, CTAs and image do not." },
+  "layoutNote": "The h1 sits at a fixed 120px offset below the section top on every route, but EVERYTHING below it is normal document flow with fixed margins, not fixed absolute y. Verified by comparing /wallet's 3-line paragraph (buttons at y=488) against /vault's 2-line paragraph (y=464): both are exactly 80px below the paragraph's real bottom edge. Build as flow + margins so it self-adjusts per route.",
+  "responsive": { "mobile": { "headingType": "24px/32px", "bodyMaxWidth": "326px", "imageHeight": "174px" }, "desktop": { "headingType": "40px/56px", "bodyMaxWidth": "480px", "imageHeight": "640px" } },
+  "measuredFrom": "src/pages/ProductPage.jsx:34-71"
+}

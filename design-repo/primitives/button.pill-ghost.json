@@ -1,0 +1,20 @@
+{
+  "id": "button.pill-ghost",
+  "layer": "primitive",
+  "name": "Ghost pill button",
+  "purpose": "The always-secondary companion to button.pill-primary. On this site it is almost always the literal words 'Talk to the team'.",
+  "props": {
+    "label": { "type": "string", "required": true, "maxWords": 4 },
+    "href":  { "type": "string", "required": true },
+    "iconTrailing": { "type": "const", "value": "none", "required": true, "note": "Ghost pills never carry the arrow — this is the measured distinction from the primary pill." }
+  },
+  "style": {
+    "background": "transparent",
+    "backgroundHover": "surface.hover",
+    "color": "text.primary",
+    "radius": "radius.pill",
+    "padding": "space.6 space.16",
+    "type": "type.body"
+  },
+  "measuredFrom": "src/components/FinalCta.jsx:52-54"
+}

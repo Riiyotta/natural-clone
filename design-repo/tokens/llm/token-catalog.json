@@ -1,0 +1,116 @@
+{
+  "$description": "What a generator may REFERENCE. It must cite a semantic role id (e.g. `text.secondary`), never a raw value (`rgb(113,112,111)`). Foundation values are shown here only so a human can sanity-check the resolution; a generated PageSpec that contains a literal color or px value instead of a role id is wrong even if the value is correct.",
+  "version": "1.0.0",
+  "referenceableRoles": {
+    "color": [
+      "accent.verified",
+      "border.card",
+      "border.field",
+      "dataviz.uptimeBar",
+      "dataviz.volumeGradientFrom",
+      "dataviz.volumeGradientTo",
+      "dataviz.volumeLabel",
+      "surface.alt",
+      "surface.button",
+      "surface.buttonHover",
+      "surface.cardVisual",
+      "surface.hover",
+      "surface.page",
+      "surface.panel",
+      "text.disclosure",
+      "text.heroTitle",
+      "text.mutedOlive",
+      "text.onColor",
+      "text.primary",
+      "text.secondary",
+      "text.tertiary"
+    ],
+    "type": [
+      "type.body",
+      "type.bodySmall",
+      "type.eyebrow",
+      "type.h1",
+      "type.h2",
+      "type.h2Cta",
+      "type.h3",
+      "type.mono"
+    ],
+    "spacing": [
+      "space.10",
+      "space.12",
+      "space.120",
+      "space.14",
+      "space.16",
+      "space.160",
+      "space.2",
+      "space.20",
+      "space.200",
+      "space.24",
+      "space.240",
+      "space.28",
+      "space.280",
+      "space.32",
+      "space.320",
+      "space.36",
+      "space.4",
+      "space.40",
+      "space.48",
+      "space.56",
+      "space.6",
+      "space.60",
+      "space.64",
+      "space.72",
+      "space.8",
+      "space.80"
+    ],
+    "radius": [
+      "radius.2xl",
+      "radius.3xl",
+      "radius.ghost",
+      "radius.lg",
+      "radius.md",
+      "radius.pill",
+      "radius.sm",
+      "radius.window",
+      "radius.xl"
+    ],
+    "elevation": [
+      "shadow.none",
+      "shadow.sandbox",
+      "shadow.soft",
+      "shadow.strong"
+    ],
+    "icon": [
+      "icon.10",
+      "icon.12",
+      "icon.14",
+      "icon.16",
+      "icon.18",
+      "icon.20",
+      "icon.32"
+    ],
+    "easing": [
+      "ease.enter",
+      "ease.inOut",
+      "ease.inOutCirc",
+      "ease.inOutQuart",
+      "ease.morph",
+      "ease.out",
+      "ease.pressable"
+    ],
+    "breakpoint": [
+      "bp.md",
+      "bp.lg",
+      "bp.xl"
+    ]
+  },
+  "resolutionOrder": [
+    "tokens/00-foundation/*  (available values)",
+    "tokens/themes/light.json  (the only theme; resolves every semantic role to a literal)",
+    "tokens/10-semantic/semantic.json  (intent)",
+    "tokens/20-component/component-tokens.json  (approved application)",
+    "node-level overrides permitted by tokens/llm/component-allowlist.json",
+    "responsive overrides declared in a section contract's `responsive` block"
+  ],
+  "note": "Never resolve an alias before the theme is known. On this site that is trivial \u2014 there is exactly one theme \u2014 but the order is stated so it survives a future dark mode."
+}

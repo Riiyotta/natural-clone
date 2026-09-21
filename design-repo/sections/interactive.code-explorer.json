@@ -1,0 +1,34 @@
+{
+  "id": "interactive.code-explorer",
+  "category": "interactive",
+  "name": "Install-method code explorer",
+  "purpose": "A photographic panel holding a tab row and a copyable terminal, letting a developer see the install command for their tool of choice. The homepage's 'Developers' section.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 10 },
+      "backgroundAsset": { "type": "assetRef", "assetRole": "photo.section-graphic" },
+      "tabs": {
+        "type": "array", "minItems": 2, "maxItems": 4,
+        "items": {
+          "additionalProperties": false,
+          "properties": {
+            "label":   { "type": "string", "maxWords": 2 },
+            "command": { "type": "string", "maxWords": 12 }
+          },
+          "required": ["label", "command"]
+        }
+      },
+      "primaryCta":   { "$ref": "primitives/button.pill-primary" },
+      "secondaryCta": { "$ref": "primitives/button.pill-ghost" }
+    },
+    "required": ["eyebrow", "heading", "backgroundAsset", "tabs", "primaryCta", "secondaryCta"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["opacity-crossfade"], "reducedMotionFallback": "instant-swap", "detail": "Tab background/color transitions at 100ms ease-out. The terminal body is pinned at a constant 80px on every tab so switching never resizes the card." },
+  "responsive": { "mobile": { "panelHeight": "400px" }, "desktop": { "panelHeight": "560px" } },
+  "layoutNote": "A single flex COLUMN — header, then a full-bleed panel, then the CTA row. NOT a 2-column grid with text left and code right.",
+  "accessibility": { "role": "tablist", "childRole": "tab", "ariaSelected": true, "copyAction": "a real clipboard write guarded in a try/catch; failure is a silent no-op" },
+  "measuredFrom": "src/components/Developers.jsx:93-193"
+}

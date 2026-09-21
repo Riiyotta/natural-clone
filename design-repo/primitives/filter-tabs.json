@@ -1,0 +1,22 @@
+{
+  "id": "filter-tabs",
+  "layer": "primitive",
+  "name": "Plain-text filter tabs",
+  "purpose": "A horizontal row of text-only filters. Used identically by the Investors row (All/Firms/Individuals) and the /blog index (All/Team/Natural/Research).",
+  "props": {
+    "options":  { "type": "array", "items": "string", "minItems": 2, "maxItems": 4, "required": true },
+    "selected": { "type": "string", "required": true }
+  },
+  "style": {
+    "activeColor": "text.primary",
+    "inactiveColor": "text.tertiary",
+    "inactiveHoverColor": "text.secondary",
+    "padding": "space.4 space.8",
+    "radius": "radius.sm",
+    "type": "type.body",
+    "background": "transparent"
+  },
+  "constraints": ["Not pills. Not bordered. index.css/Investors.jsx record this as a correction from an earlier filled-pill assumption."],
+  "accessibility": { "role": "tablist", "childRole": "tab", "ariaSelected": true },
+  "measuredFrom": "src/components/Investors.jsx:153-168"
+}

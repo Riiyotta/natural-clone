@@ -1,0 +1,12 @@
+{
+  "id": "chrome.navbar",
+  "category": "chrome",
+  "name": "Global navbar",
+  "purpose": "Persistent site chrome. Mounted once outside the router, so it is present on every route and is never page content.",
+  "content": { "additionalProperties": false, "properties": {}, "required": [] },
+  "contentNote": "Intentionally empty. The navbar's links are a global constant in the source, not per-page content — a PageSpec must not be able to redefine them.",
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "maxPerPage": 1 },
+  "motion": { "allowed": ["entrance-stagger"], "reducedMotionFallback": "none", "detail": "logo 1000ms, links 1100ms, right actions 1200ms; distance -12px, duration 400ms, ease-out. The submenu panel stays MOUNTED and animates its own height (opacity/visibility/transform .15s, height .25s) — it is never conditionally rendered." },
+  "responsive": { "mobile": { "behavior": "hamburger; the mega-menus become accordions" }, "desktop": { "behavior": "3 ghost triggers + a full-bleed submenu panel pinned at y=80" } },
+  "measuredFrom": "src/components/Navbar.jsx:194-322, src/index.css:552-639"
+}

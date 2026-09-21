@@ -1,0 +1,24 @@
+{
+  "id": "terminal-block",
+  "layer": "component",
+  "name": "Terminal block",
+  "purpose": "A macOS-styled terminal card. Appears twice on the site in two measurably different dressings.",
+  "content": {
+    "titleOrCopyAction": { "type": "string", "required": true, "maxWords": 3 },
+    "lines": { "type": "array", "items": "string", "minItems": 1, "maxItems": 3, "required": true, "maxWordsPerItem": 12 }
+  },
+  "variants": {
+    "chat": {
+      "note": "the Home Benefits card variant — grey #f6f6f6 titlebar with a text label, three rgb(215,214,212) dots, body rows at 15px/24px in the body face",
+      "height": "346px mobile / 240px desktop",
+      "measuredFrom": "src/components/BenefitsSpeed.jsx:10-34"
+    },
+    "install": {
+      "note": "the Developers explorer variant — translucent white 20px header with three near-black dots and a Copy action, body a fixed 80px with a GT Standard Mono prompt glyph",
+      "height": "100px",
+      "bodyHeightNote": "The body is pinned at 80px on every tab deliberately: the longest command wraps to two lines and the shorter ones leave line two empty. Letting it size to content made it snap 80->60px per switch, which read as a jerk.",
+      "measuredFrom": "src/components/Developers.jsx:144-176"
+    }
+  },
+  "style": { "radius": "radius.sm", "dotSize": "space.12", "dotGap": "space.6", "promptGlyph": "❯", "promptFont": "font.mono" }
+}

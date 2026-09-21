@@ -1,0 +1,20 @@
+{
+  "id": "conversion.newsletter",
+  "category": "conversion",
+  "name": "Newsletter signup",
+  "purpose": "A narrow centered email capture closing /blog, styled as a single underlined input rather than a boxed form.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "heading":     { "type": "string", "maxWords": 8 },
+      "placeholder": { "type": "string", "maxWords": 3 }
+    },
+    "required": ["heading", "placeholder"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustBeLastContentSection": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "behaviorNote": "The form does not submit anywhere — onSubmit calls preventDefault only, and the submit button is permanently disabled. Preserve this no-outbound-request property in any generated page.",
+  "responsive": { "mobile": { "headingType": "18px/24px" }, "desktop": { "headingType": "24px/32px" } },
+  "style": { "columnMaxWidth": "400px", "inputType": "24px/32px on a transparent field over a 1px border-bottom", "align": "center" },
+  "measuredFrom": "src/pages/Blog.jsx:132-158"
+}

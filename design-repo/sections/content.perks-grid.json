@@ -1,0 +1,28 @@
+{
+  "id": "content.perks-grid",
+  "category": "content",
+  "name": "Perks grid",
+  "purpose": "A partner-logo row over a multi-row 3-column grid of benefit line items. The /careers 'Perks' section.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 10 },
+      "intro":   { "type": "string", "maxWords": 40 },
+      "partners": {
+        "type": "array", "minItems": 0, "maxItems": 4,
+        "items": { "additionalProperties": false, "properties": { "name": { "type": "string", "maxWords": 4 }, "logo": { "type": "assetRef", "assetRole": "logo.partner" } }, "required": ["name", "logo"] }
+      },
+      "perks": {
+        "type": "array", "minItems": 3, "maxItems": 18,
+        "items": { "additionalProperties": false, "properties": { "title": { "type": "string", "maxWords": 6 }, "subtitle": { "type": "string", "maxWords": 12 } }, "required": ["title", "subtitle"] }
+      }
+    },
+    "required": ["eyebrow", "heading", "intro", "partners", "perks"]
+  },
+  "constraints": { "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "columns": 1, "gap": "space.40" }, "desktop": { "columns": 3, "columnGap": "space.120", "rowGap": "space.80" } },
+  "assetPolicy": "partners[].logo uses logo.partner, which is must-not-fabricate — these are real third-party trademarks. A generated page for another brand should set partners to an empty array (minItems is 0 for exactly this reason) rather than substituting other companies' marks.",
+  "measuredFrom": "src/pages/Careers.jsx:283-316"
+}

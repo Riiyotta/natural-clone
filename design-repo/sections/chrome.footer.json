@@ -1,0 +1,12 @@
+{
+  "id": "chrome.footer",
+  "category": "chrome",
+  "name": "Global footer",
+  "purpose": "Persistent site chrome carrying the full link map plus the FDIC/legal disclosure block. Mounted once outside the router.",
+  "content": { "additionalProperties": false, "properties": {}, "required": [] },
+  "contentNote": "Intentionally empty, for the same reason as chrome.navbar — and additionally because the disclosure copy is a real regulatory statement naming a real bank. A PageSpec must not be able to author or vary it.",
+  "constraints": { "onePerPage": true, "mustBeLast": true, "maxPerPage": 1 },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "behavior": "single column, row-gap space.64, padding space.40 space.32" }, "desktop": { "behavior": "3x320px grid, gutters space.120, padding space.120 space.40; the Products column spans both rows" } },
+  "measuredFrom": "src/components/Footer.jsx:77-147"
+}

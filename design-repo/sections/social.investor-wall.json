@@ -1,0 +1,22 @@
+{
+  "id": "social.investor-wall",
+  "category": "social-proof",
+  "name": "Investor wall of love",
+  "purpose": "A single full-bleed horizontally-scrolling row of tinted quote cards with text filters beneath. Appears on both the homepage and /about with identical content.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 10 },
+      "filters": { "$ref": "primitives/filter-tabs" },
+      "cards":   { "type": "array", "minItems": 6, "maxItems": 30, "items": { "$ref": "components/card.investor-quote" } }
+    },
+    "required": ["eyebrow", "heading", "filters", "cards"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["filter-collapse"], "reducedMotionFallback": "instant-hide", "detail": "Filtering keeps EVERY card mounted and animates width, margin-right and opacity to 0 for hidden cards (150ms ease-out each) rather than removing them from the DOM." },
+  "responsive": { "mobile": { "cardWidth": "335px (both variants collapse)", "quoteLineClamp": 5 }, "desktop": { "cardWidth": "560px wide / 360px narrow", "quoteLineClamp": 4, "sectionMinHeight": "1010px" } },
+  "layoutNote": "A single flex-nowrap row bled to 100vw via a negative margin — NOT a wrapping masonry grid.",
+  "assetPolicy": "Every card's logo slot uses decor.logo-placeholder, a generic glyph. Real investor firm logos must never be substituted.",
+  "measuredFrom": "src/components/Investors.jsx:115-170, src/index.css:205-232"
+}

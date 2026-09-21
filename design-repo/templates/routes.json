@@ -1,0 +1,144 @@
+{
+  "$description": "Every real route on the site, mapped 1:1 to exactly one template. Derived from src/App.jsx's Routes block; there are no dead routes and no route declared without a page component.",
+  "routeCount": 16,
+  "routes": [
+    {
+      "path": "/",
+      "template": "home.landing",
+      "component": "src/pages/Home.jsx",
+      "measuredFrom": "src/App.jsx:31"
+    },
+    {
+      "path": "/wallet",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "wallet",
+      "measuredFrom": "src/App.jsx:13, src/App.jsx:32-34"
+    },
+    {
+      "path": "/vault",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "vault",
+      "measuredFrom": "src/App.jsx:14, src/App.jsx:32-34"
+    },
+    {
+      "path": "/pay",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "pay",
+      "measuredFrom": "src/App.jsx:15, src/App.jsx:32-34"
+    },
+    {
+      "path": "/request",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "request",
+      "measuredFrom": "src/App.jsx:16, src/App.jsx:32-34"
+    },
+    {
+      "path": "/transfer",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "transfer",
+      "measuredFrom": "src/App.jsx:17, src/App.jsx:32-34"
+    },
+    {
+      "path": "/connect",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "connect",
+      "measuredFrom": "src/App.jsx:18, src/App.jsx:32-34"
+    },
+    {
+      "path": "/identity",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "identity",
+      "measuredFrom": "src/App.jsx:19, src/App.jsx:32-34"
+    },
+    {
+      "path": "/observability",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "observability",
+      "measuredFrom": "src/App.jsx:20, src/App.jsx:32-34"
+    },
+    {
+      "path": "/disputes",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "disputes",
+      "measuredFrom": "src/App.jsx:21, src/App.jsx:32-34"
+    },
+    {
+      "path": "/compliance",
+      "template": "product.feature",
+      "component": "src/pages/ProductPage.jsx",
+      "slug": "compliance",
+      "measuredFrom": "src/App.jsx:22, src/App.jsx:32-34"
+    },
+    {
+      "path": "/about",
+      "template": "company.narrative",
+      "component": "src/pages/About.jsx",
+      "measuredFrom": "src/App.jsx:35"
+    },
+    {
+      "path": "/careers",
+      "template": "company.narrative",
+      "component": "src/pages/Careers.jsx",
+      "measuredFrom": "src/App.jsx:36"
+    },
+    {
+      "path": "/blog",
+      "template": "index.posts",
+      "component": "src/pages/Blog.jsx",
+      "measuredFrom": "src/App.jsx:37"
+    },
+    {
+      "path": "/contact",
+      "template": "form.single",
+      "component": "src/pages/Contact.jsx",
+      "measuredFrom": "src/App.jsx:38"
+    },
+    {
+      "path": "/pricing",
+      "template": "commerce.pricing",
+      "component": "src/pages/Pricing.jsx",
+      "measuredFrom": "src/App.jsx:39"
+    }
+  ],
+  "unroutedLinkTargets": {
+    "$description": "Hrefs that exist in the site's own navigation but have NO route in src/App.jsx. These are real dangling links in the clone, recorded honestly rather than silently normalised. A generated page must NOT treat them as available routes.",
+    "internal": [
+      "/signup",
+      "/login",
+      "/direct",
+      "/accept",
+      "/cards",
+      "/credit",
+      "/voice",
+      "/bill",
+      "/charge",
+      "/join-slack",
+      "/nsa",
+      "/privacy",
+      "/aup",
+      "/disclosures",
+      "/blog/<any-post-slug>"
+    ],
+    "external": [
+      "https://docs.natural.com",
+      "https://status.natural.com",
+      "https://x.com/naturalpay",
+      "https://linkedin.com/company/naturalpay",
+      "https://instagram.com/naturalpay",
+      "https://github.com/naturalpay",
+      "mailto:hi@natural.com",
+      "mailto:founders@natural.com",
+      "https://column.com/legal/sweep-program-network-banks"
+    ],
+    "measuredFrom": "src/components/Footer.jsx:1-54, src/components/Navbar.jsx:3-51"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "button.pill-primary",
+  "layer": "primitive",
+  "name": "Primary pill button",
+  "purpose": "The site's single conversion affordance — a dark filled pill that always carries a forward arrow. Every 'Sign up for free' / 'Learn more' / 'Read docs' / 'View careers' CTA on the site is this one primitive.",
+  "props": {
+    "label":  { "type": "string", "required": true, "maxWords": 4 },
+    "href":   { "type": "string", "required": true },
+    "iconTrailing": { "type": "const", "value": "arrow-forward", "required": true, "note": "Not optional. Re-measured live and recorded in three separate component comments: every dark-filled pill carries a 12px forward arrow at a 12px gap; ghost pills carry none." }
+  },
+  "style": {
+    "background": "surface.button",
+    "backgroundHover": "surface.buttonHover",
+    "color": "text.onColor",
+    "radius": "radius.pill",
+    "padding": "space.6 space.16",
+    "gap": "space.12",
+    "type": "type.body",
+    "transition": "background-color 0.1s ease-out"
+  },
+  "accessibility": { "role": "link", "focusVisible": "inherits browser default; no custom focus ring in source" },
+  "measuredFrom": "src/components/FinalCta.jsx:45-51, src/components/Control.jsx:1-3"
+}

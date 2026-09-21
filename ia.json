@@ -1,0 +1,293 @@
+{
+  "$comment": "Derived by reading the real React source in src/ (App.jsx route table, src/pages/*.jsx section markup, src/components/*.jsx), not from a crawl or a screenshot pass. Every template's section list is the actual top-to-bottom JSX order in that page component. Where an earlier spec document (CLONE_SPEC.md) disagreed with the source, the source won.",
+  "meta": {
+    "source": "Local React clone of https://www.natural.com/ at /Users/riyaghosh/V2 cloned/Natural",
+    "status": "measured-from-source",
+    "productionApproved": false,
+    "totalRoutes": 16,
+    "totalTemplates": 7,
+    "generatedBy": "ia-builder skill, read directly from src/App.jsx + src/pages/*.jsx"
+  },
+  "categories": {
+    "CHROME": "Site-wide furniture mounted outside the router in App.jsx, present on every route.",
+    "HERO": "The page-opening block that carries the route's h1.",
+    "NARRATIVE": "Marketing explanation blocks: what the product does, how it works, who it is for.",
+    "PROOF": "Third-party credibility: investors, customer logos, testimonials.",
+    "CONTENT": "The substantive body of a content route (post lists, role lists, pricing tables, forms).",
+    "CONVERSION": "Blocks whose job is to move the visitor to sign up or make contact."
+  },
+  "sections": {
+    "chrome.navbar": {
+      "category": "CHROME",
+      "description": "Fixed top navigation: wordmark, a Products mega-menu, flat links, and sign-up/contact actions. Mounted once outside <Routes> so it never remounts on navigation.",
+      "scope": "Present identically on all 16 routes.",
+      "implementedBy": "src/components/Navbar.jsx"
+    },
+    "chrome.footer": {
+      "category": "CHROME",
+      "description": "Site footer: grouped link columns, wordmark, and legal line. Mounted once outside <Routes>, after <main>.",
+      "scope": "Present identically on all 16 routes.",
+      "implementedBy": "src/components/Footer.jsx"
+    },
+    "hero.scroll-dashboard": {
+      "category": "HERO",
+      "description": "Homepage-only scroll-scrubbed hero. A sticky viewport-height stage holds a news pill, the two-tone h1 and the CTA pair, while a 48px box expands into the full dashboard screenshot as --progress runs 0 to 1. All sizing is viewport-height-relative, not fixed-pixel.",
+      "scope": "The 1 homepage route only.",
+      "implementedBy": "src/components/Hero.jsx"
+    },
+    "hero.product-detail": {
+      "category": "HERO",
+      "description": "Product-route hero: h1, a short body paragraph with its own entrance delay, a sign-up CTA pair, and a wide product screenshot below.",
+      "scope": "All 10 product routes.",
+      "implementedBy": "src/pages/ProductPage.jsx"
+    },
+    "hero.statement": {
+      "category": "HERO",
+      "description": "Tall centred statement hero carrying only an oversized h1 and no imagery, used to open the company-story routes.",
+      "scope": "The /about and /careers routes.",
+      "implementedBy": "src/pages/About.jsx, src/pages/Careers.jsx"
+    },
+    "hero.page-title": {
+      "category": "HERO",
+      "description": "Compact left-aligned title block that opens a content index route with an h1 and nothing else.",
+      "scope": "The /blog and /pricing routes.",
+      "implementedBy": "src/pages/Blog.jsx, src/pages/Pricing.jsx"
+    },
+    "narrative.benefits-speed": {
+      "category": "NARRATIVE",
+      "description": "Homepage speed/latency benefit block, the first explanatory section after the hero.",
+      "scope": "The 1 homepage route only.",
+      "implementedBy": "src/components/BenefitsSpeed.jsx"
+    },
+    "narrative.flows": {
+      "category": "NARRATIVE",
+      "description": "Homepage tabbed payment-flow explainer with an animated graphic per tab.",
+      "scope": "The 1 homepage route only.",
+      "implementedBy": "src/components/Flows.jsx"
+    },
+    "narrative.control": {
+      "category": "NARRATIVE",
+      "description": "Homepage block on agent permissions, limits and control, with a tabbed/stepped visual.",
+      "scope": "The 1 homepage route only.",
+      "implementedBy": "src/components/Control.jsx"
+    },
+    "narrative.developers": {
+      "category": "NARRATIVE",
+      "description": "Homepage developer-experience block showing API/code affordances.",
+      "scope": "The 1 homepage route only.",
+      "implementedBy": "src/components/Developers.jsx"
+    },
+    "narrative.benefits-scale": {
+      "category": "NARRATIVE",
+      "description": "Homepage scale/volume benefit block, paired visually with the speed block earlier on the page.",
+      "scope": "The 1 homepage route only.",
+      "implementedBy": "src/components/BenefitsScale.jsx"
+    },
+    "narrative.feature-card-grid": {
+      "category": "NARRATIVE",
+      "description": "Eyebrow, h2 and a three-up card grid of feature cards, each with a title, one line of body copy and a graphic. The per-route copy comes from productContent.js.",
+      "scope": "All 10 product routes.",
+      "implementedBy": "src/pages/ProductPage.jsx"
+    },
+    "narrative.company-story": {
+      "category": "NARRATIVE",
+      "description": "Long-form prose block on the company's origin and purpose, set as a single wide paragraph under an h2.",
+      "scope": "The /about route only.",
+      "implementedBy": "src/pages/About.jsx"
+    },
+    "narrative.values": {
+      "category": "NARRATIVE",
+      "description": "Numbered or headed list of company values/principles, one short paragraph each.",
+      "scope": "The /about and /careers routes.",
+      "implementedBy": "src/pages/About.jsx, src/pages/Careers.jsx"
+    },
+    "narrative.team": {
+      "category": "NARRATIVE",
+      "description": "Team/leadership block introducing the people behind the company.",
+      "scope": "The /about route only.",
+      "implementedBy": "src/pages/About.jsx"
+    },
+    "narrative.benefits-perks": {
+      "category": "NARRATIVE",
+      "description": "Employee benefits and perks block on the careers route, distinct from the homepage product-benefit sections.",
+      "scope": "The /careers route only.",
+      "implementedBy": "src/pages/Careers.jsx"
+    },
+    "proof.investors": {
+      "category": "PROOF",
+      "description": "Filterable wall of investor and angel cards, each a quote with an attributed name. Fund cards and angel cards use different widths at desktop and collapse to one width on mobile.",
+      "scope": "The homepage and the /about route.",
+      "implementedBy": "src/components/Investors.jsx"
+    },
+    "content.blog-teaser": {
+      "category": "CONTENT",
+      "description": "Homepage three-up teaser of recent posts, linking into the blog index. Not the blog index's own listing.",
+      "scope": "The 1 homepage route only.",
+      "implementedBy": "src/components/Blog.jsx"
+    },
+    "content.blog-index": {
+      "category": "CONTENT",
+      "description": "Blog index listing with a role=tablist filter row above it, rendering every post as an image, title and date.",
+      "scope": "The /blog route only.",
+      "implementedBy": "src/pages/Blog.jsx"
+    },
+    "content.blog-newsletter": {
+      "category": "CONTENT",
+      "description": "Closing block on the blog index inviting a newsletter subscription. Stands in for the final CTA that every other route carries.",
+      "scope": "The /blog route only.",
+      "implementedBy": "src/pages/Blog.jsx"
+    },
+    "content.open-roles": {
+      "category": "CONTENT",
+      "description": "Anchored (#open-roles) list of open positions on a tinted background, headed by the role count rendered as a second h2.",
+      "scope": "The /careers route only.",
+      "implementedBy": "src/pages/Careers.jsx"
+    },
+    "content.pricing-table": {
+      "category": "CONTENT",
+      "description": "Grouped pricing table with a sticky desktop-only category nav on the left, collapsing to a single stacked column on mobile.",
+      "scope": "The /pricing route only.",
+      "implementedBy": "src/pages/Pricing.jsx"
+    },
+    "content.contact-form": {
+      "category": "CONTENT",
+      "description": "Full-height centred contact form. This route's only block: it carries its own h1 and has no separate hero.",
+      "scope": "The /contact route only.",
+      "implementedBy": "src/pages/Contact.jsx"
+    },
+    "conversion.final-cta": {
+      "category": "CONVERSION",
+      "description": "Shared closing call-to-action band with a heading and a sign-up action, rendered immediately before the footer.",
+      "scope": "15 of the 16 routes — every route except /blog, which closes with its newsletter block instead. On /careers it is wrapped in a .careers-cta div that raises its vertical padding from 80px to 240px.",
+      "implementedBy": "src/components/FinalCta.jsx"
+    }
+  },
+  "templates": [
+    {
+      "id": "template.home",
+      "name": "Homepage",
+      "routeCount": 1,
+      "routes": ["/"],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.navbar",
+        "hero.scroll-dashboard",
+        "narrative.benefits-speed",
+        "narrative.flows",
+        "narrative.control",
+        "narrative.developers",
+        "narrative.benefits-scale",
+        "proof.investors",
+        "content.blog-teaser",
+        "conversion.final-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.product-detail",
+      "name": "Product detail",
+      "routeCount": 10,
+      "routes": [
+        "/wallet",
+        "/vault",
+        "/pay",
+        "/request",
+        "/transfer",
+        "/connect",
+        "/identity",
+        "/observability",
+        "/disputes",
+        "/compliance"
+      ],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.navbar",
+        "hero.product-detail",
+        "narrative.feature-card-grid",
+        "conversion.final-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.about",
+      "name": "About",
+      "routeCount": 1,
+      "routes": ["/about"],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.navbar",
+        "hero.statement",
+        "narrative.company-story",
+        "narrative.values",
+        "narrative.team",
+        "proof.investors",
+        "conversion.final-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.careers",
+      "name": "Careers",
+      "routeCount": 1,
+      "routes": ["/careers"],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.navbar",
+        "hero.statement",
+        "narrative.values",
+        "narrative.benefits-perks",
+        "content.open-roles",
+        "conversion.final-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.blog-index",
+      "name": "Blog index",
+      "routeCount": 1,
+      "routes": ["/blog"],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.navbar",
+        "hero.page-title",
+        "content.blog-index",
+        "content.blog-newsletter",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.pricing",
+      "name": "Pricing",
+      "routeCount": 1,
+      "routes": ["/pricing"],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.navbar",
+        "hero.page-title",
+        "content.pricing-table",
+        "conversion.final-cta",
+        "chrome.footer"
+      ]
+    },
+    {
+      "id": "template.contact",
+      "name": "Contact",
+      "routeCount": 1,
+      "routes": ["/contact"],
+      "routePattern": null,
+      "chrome": "full",
+      "sections": [
+        "chrome.navbar",
+        "content.contact-form",
+        "conversion.final-cta",
+        "chrome.footer"
+      ]
+    }
+  ]
+}

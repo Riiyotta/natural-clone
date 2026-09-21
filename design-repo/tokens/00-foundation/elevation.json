@@ -1,0 +1,13 @@
+{
+  "$description": "Shadow tokens from the Tailwind boxShadow extension. Cards themselves use none of these — the site relies on the 1px card border instead.",
+  "measuredFrom": "tailwind.config.js:94-98",
+  "tokens": {
+    "shadow.none": "none",
+    "shadow.soft": "0px 4px 16px 0px #0000000a",
+    "shadow.strong": "0px 4px 32px 0px #00000014",
+    "shadow.sandbox": "0 -2px 12px #0000000a, 0 2px 6px #1815140f, 0 10px 28px #18151424"
+  },
+  "notes": [
+    "No component in src/ applies shadow-soft/strong/sandbox. They are declared in the theme but unused by the clone. Recorded here as available-but-unused rather than deleted, because they are real tokens in the real source."
+  ]
+}

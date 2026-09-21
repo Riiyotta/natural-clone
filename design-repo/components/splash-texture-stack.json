@@ -1,0 +1,19 @@
+{
+  "id": "splash-texture-stack",
+  "layer": "component",
+  "name": "Splash texture stack",
+  "purpose": "A full-bleed photograph overlaid with four blended texture films. This is the site's signature brand device and appears on 4 routes.",
+  "content": {
+    "photo": { "type": "assetRef", "required": true, "assetRole": "photo.splash" },
+    "opacity": { "type": "enum", "values": [0.1, 0.25], "required": true, "note": "0.1 in the final-CTA splash, 0.25 in the mid-page About/Careers splash — two real, measured values, not one" }
+  },
+  "layers": [
+    { "asset": "texture.paper", "blend": "multiply" },
+    { "asset": "texture.print-medium", "blend": "overlay" },
+    { "asset": "texture.scan", "blend": "screen" },
+    { "asset": "texture.grain", "blend": "soft-light" }
+  ],
+  "style": { "finalCtaHeight": "44.4vw with a 400px floor", "midPageHeight": "400px mobile / 640px desktop" },
+  "constraints": ["The four texture layers are a fixed, ordered set. A generator may not add, remove, or reorder them, and may not change the blend modes."],
+  "measuredFrom": "src/components/FinalCta.jsx:17-25, src/components/FinalCta.jsx:58-82"
+}

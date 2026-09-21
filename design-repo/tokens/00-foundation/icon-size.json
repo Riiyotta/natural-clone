@@ -1,0 +1,12 @@
+{
+  "$description": "Icon sizes actually rendered by the clone's inline SVG components. All verified against the real width/height attributes, not inferred.",
+  "tokens": {
+    "icon.10": { "$value": "10px", "usedBy": "ArrowForwardIcon in the hero news tag and About/Careers team rows", "measuredFrom": "src/components/Hero.jsx:84" },
+    "icon.12": { "$value": "12px", "usedBy": "ArrowForwardIcon on every dark pill CTA; CopyIcon in the Control card", "measuredFrom": "src/components/FinalCta.jsx:50" },
+    "icon.14": { "$value": "14px", "usedBy": "CopyIcon in the Developers terminal header", "measuredFrom": "src/components/Developers.jsx:55" },
+    "icon.16": { "$value": "16px", "usedBy": "Developers tab brand glyphs; ArrowUpRightIcon on investor cards; Control EditIcon; Contact ChevronIcon", "measuredFrom": "src/components/Developers.jsx:133" },
+    "icon.18": { "$value": "18px", "usedBy": "Control bullet checkmarks; the blue VerifiedBadge; the owner avatar", "measuredFrom": "src/components/Control.jsx:34" },
+    "icon.20": { "$value": "20px", "usedBy": "the blog newsletter submit arrow", "measuredFrom": "src/pages/Blog.jsx:6" },
+    "icon.32": { "$value": "32px", "usedBy": "the investor-card LogoMark placeholder glyph", "measuredFrom": "src/components/Investors.jsx:41" }
+  }
+}

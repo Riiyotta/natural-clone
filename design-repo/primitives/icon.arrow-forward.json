@@ -1,0 +1,10 @@
+{
+  "id": "icon.arrow-forward",
+  "layer": "primitive",
+  "name": "Forward arrow",
+  "purpose": "The site's only recurring directional glyph — on every primary pill, every team/blog row link, and the newsletter submit.",
+  "props": { "size": { "type": "enum", "values": [10, 12, 20], "required": true } },
+  "implementation": "inline <svg viewBox=\"0 0 14 14\"> with a single stroked path, strokeWidth 1.3, round caps/joins; currentColor",
+  "note": "Redeclared locally in 11 different components rather than imported from one place — a real, deliberate duplication in the source, recorded here so a generator does not invent a shared icon module that does not exist.",
+  "measuredFrom": "src/components/FinalCta.jsx:3-15"
+}

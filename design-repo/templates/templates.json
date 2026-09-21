@@ -1,0 +1,104 @@
+{
+  "$description": "One entry per distinct PAGE SHAPE, not per route. Each template's `nodes` array is structured objects — never bare strings — so `required` and `repeatable` are machine-enforceable. chrome.navbar and chrome.footer are mounted once OUTSIDE the router (src/App.jsx:28 and src/App.jsx:42) and are therefore present on every route; they are listed explicitly in every template's node sequence so a PageSpec describes a complete rendered page.",
+  "version": "1.0.0",
+  "templates": {
+    "home.landing": {
+      "name": "Homepage",
+      "shape": "The single scroll-scrubbed marketing landing page. Used by exactly one route.",
+      "retrievalEligible": true,
+      "nodes": [
+        { "section": "chrome.navbar",             "required": true, "repeatable": false },
+        { "section": "hero.scroll-dashboard",     "required": true, "repeatable": false },
+        { "section": "content.card-grid",         "required": true, "repeatable": false, "variant": "generated-visuals", "instanceNote": "'Move at agent speed'" },
+        { "section": "interactive.tab-stage",     "required": true, "repeatable": false },
+        { "section": "content.split-feature",     "required": true, "repeatable": false },
+        { "section": "interactive.code-explorer", "required": true, "repeatable": false },
+        { "section": "content.card-grid",         "required": true, "repeatable": false, "variant": "generated-visuals", "instanceNote": "'Scale with confidence' — the SECOND card grid on this page. content.card-grid's maxPerPage of 2 exists for exactly this." },
+        { "section": "social.investor-wall",      "required": true, "repeatable": false },
+        { "section": "content.blog-teaser",       "required": true, "repeatable": false },
+        { "section": "conversion.final-cta",      "required": true, "repeatable": false, "variant": "default" },
+        { "section": "chrome.footer",             "required": true, "repeatable": false }
+      ],
+      "measuredFrom": "src/pages/Home.jsx:11-25"
+    },
+    "product.feature": {
+      "name": "Product feature page",
+      "shape": "Hero with a product screenshot, then a single 3-up feature grid, then the final CTA. One component (ProductPage.jsx) serves all 10 product routes, data-driven from productContent.js.",
+      "retrievalEligible": true,
+      "nodes": [
+        { "section": "chrome.navbar",        "required": true, "repeatable": false },
+        { "section": "hero.product",         "required": true, "repeatable": false },
+        { "section": "content.card-grid",    "required": true, "repeatable": false, "variant": "asset-visuals" },
+        { "section": "conversion.final-cta", "required": true, "repeatable": false, "variant": "default" },
+        { "section": "chrome.footer",        "required": true, "repeatable": false }
+      ],
+      "contentInvariants": [
+        "ALL 10 product routes carry an eyebrow above the h2. The four observed eyebrow values are 'Accounts', 'Money movement', 'Developer & billing' and 'Features'. An earlier extraction pass wrongly reported that /identity, /observability, /disputes and /compliance had NO eyebrow — it inferred that from DOM node counts rather than reading the text. The eyebrow field is therefore REQUIRED on this template's card-grid node, not optional.",
+        "Every route's card-grid has exactly 3 cards. Verified across all 10."
+      ],
+      "measuredFrom": "src/pages/ProductPage.jsx:32-101, src/pages/productContent.js:1-259"
+    },
+    "company.narrative": {
+      "name": "Company narrative page",
+      "shape": "Centered statement hero, mid-page splash + story, then a run of editorial sections, closing on the final CTA. /about and /careers are the same shape with different middle sections.",
+      "retrievalEligible": true,
+      "nodes": [
+        { "section": "chrome.navbar",                 "required": true,  "repeatable": false },
+        { "section": "hero.centered-statement",       "required": true,  "repeatable": false },
+        { "section": "content.splash-story",          "required": true,  "repeatable": false },
+        { "section": "content.numbered-principles",   "required": true,  "repeatable": false },
+        { "section": "content.team-roster",           "required": false, "repeatable": false, "instanceNote": "/about only" },
+        { "section": "content.team-quote-row",        "required": false, "repeatable": false, "instanceNote": "/careers only" },
+        { "section": "content.perks-grid",            "required": false, "repeatable": false, "instanceNote": "/careers only" },
+        { "section": "social.investor-wall",          "required": false, "repeatable": false, "instanceNote": "/about only" },
+        { "section": "conversion.open-roles",         "required": false, "repeatable": false, "instanceNote": "/careers only" },
+        { "section": "conversion.final-cta",          "required": true,  "repeatable": false, "variantsAllowed": ["default", "careers"] },
+        { "section": "chrome.footer",                 "required": true,  "repeatable": false }
+      ],
+      "sectionOrderNote": "The optional nodes are declared in the union order across both routes. /about uses team-roster then investor-wall; /careers uses team-quote-row, perks-grid, then open-roles. A PageSpec must use a SUBSEQUENCE of this list — it may skip optional nodes but may not reorder them.",
+      "measuredFrom": "src/pages/About.jsx:197-403, src/pages/Careers.jsx:149-358"
+    },
+    "index.posts": {
+      "name": "Post index page",
+      "shape": "A featured post as the hero, the full filtered listing, then a newsletter capture. No final CTA and no splash on this shape.",
+      "retrievalEligible": true,
+      "nodes": [
+        { "section": "chrome.navbar",           "required": true, "repeatable": false },
+        { "section": "hero.blog-featured",      "required": true, "repeatable": false },
+        { "section": "content.post-index",      "required": true, "repeatable": false },
+        { "section": "conversion.newsletter",   "required": true, "repeatable": false },
+        { "section": "chrome.footer",           "required": true, "repeatable": false }
+      ],
+      "noHero": false,
+      "noFinalCtaNote": "This shape deliberately ends on conversion.newsletter rather than conversion.final-cta. It is one of only two routes on the site with no final CTA / brand splash.",
+      "measuredFrom": "src/pages/Blog.jsx:67-161"
+    },
+    "commerce.pricing": {
+      "name": "Pricing page",
+      "shape": "Left-aligned statement hero, the full pricing matrix, then the final CTA.",
+      "retrievalEligible": true,
+      "nodes": [
+        { "section": "chrome.navbar",          "required": true, "repeatable": false },
+        { "section": "hero.left-statement",    "required": true, "repeatable": false },
+        { "section": "content.pricing-table",  "required": true, "repeatable": false },
+        { "section": "conversion.final-cta",   "required": true, "repeatable": false, "variant": "default" },
+        { "section": "chrome.footer",          "required": true, "repeatable": false }
+      ],
+      "measuredFrom": "src/pages/Pricing.jsx:369-433"
+    },
+    "form.single": {
+      "name": "Single-form page",
+      "shape": "One vertically-centered form filling the viewport. No hero, no final CTA, no splash. The most structurally unusual shape on the site.",
+      "retrievalEligible": true,
+      "nodes": [
+        { "section": "chrome.navbar",             "required": true, "repeatable": false },
+        { "section": "conversion.contact-form",   "required": true, "repeatable": false },
+        { "section": "chrome.footer",             "required": true, "repeatable": false }
+      ],
+      "noHero": true,
+      "noHeroNote": "This template has NO hero section at all. Any ONE_HERO-style rule must name this template as an exception rather than rejecting it.",
+      "noFinalCtaNote": "Confirmed against live: /contact has no .splash element and does not load nature-desk.jpg. It is the other of the two routes with no final CTA.",
+      "measuredFrom": "src/pages/Contact.jsx:16-113, src/pages/Contact.jsx:3-7"
+    }
+  }
+}

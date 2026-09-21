@@ -1,0 +1,224 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "route": "/pricing",
+  "basedOnTemplate": "commerce.pricing",
+  "title": "Pricing",
+  "description": "The /pricing route: a left-aligned hero over the full pricing matrix.",
+  "theme": "light",
+  "nodes": [
+    {
+      "type": "section",
+      "section": "chrome.navbar",
+      "motion": {
+        "pattern": "entrance-stagger",
+        "reducedMotionFallback": "none",
+        "durationMs": 400,
+        "delayMs": 1000,
+        "easing": "ease-out"
+      },
+      "content": {}
+    },
+    {
+      "type": "section",
+      "section": "hero.left-statement",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "heading": "Simple, scalable pricing",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.pricing-table",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "nav": [
+          {
+            "heading": "Accounts",
+            "tabs": [
+              {
+                "id": "pricing-wallet",
+                "label": "Wallets"
+              },
+              {
+                "id": "pricing-vault",
+                "label": "Vault"
+              }
+            ]
+          },
+          {
+            "heading": "Move money",
+            "tabs": [
+              {
+                "id": "pricing-pay",
+                "label": "Pay"
+              },
+              {
+                "id": "pricing-request",
+                "label": "Request"
+              }
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "title": "Accounts",
+            "items": [
+              {
+                "id": "pricing-wallet",
+                "name": "Wallets",
+                "desc": "FDIC-insured wallets for agents",
+                "cells": [
+                  {
+                    "tier": "Consumer",
+                    "amounts": [
+                      {
+                        "value": "Free"
+                      }
+                    ]
+                  },
+                  {
+                    "tier": "Business",
+                    "amounts": [
+                      {
+                        "value": "Free"
+                      }
+                    ]
+                  },
+                  {
+                    "tier": "Enterprise",
+                    "amounts": [
+                      {
+                        "value": "Free"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "id": "pricing-vault",
+                "name": "Vault",
+                "desc": "One-way accounts for agents to move money in, never out",
+                "cells": [
+                  {
+                    "tier": "Consumer",
+                    "amounts": [
+                      {
+                        "value": "Free"
+                      }
+                    ]
+                  },
+                  {
+                    "tier": "Business",
+                    "amounts": [
+                      {
+                        "value": "Free"
+                      }
+                    ]
+                  },
+                  {
+                    "tier": "Enterprise",
+                    "amounts": [
+                      {
+                        "value": "Free"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "Move money",
+            "items": [
+              {
+                "id": "pricing-pay",
+                "name": "Pay",
+                "desc": "Send money to an agent, business, or consumer",
+                "cells": [
+                  {
+                    "tier": "Consumer",
+                    "amounts": [
+                      {
+                        "value": "Free"
+                      }
+                    ]
+                  },
+                  {
+                    "tier": "Business",
+                    "amounts": [
+                      {
+                        "value": "0.1% or 10 bps"
+                      }
+                    ]
+                  },
+                  {
+                    "tier": "Enterprise",
+                    "amounts": [
+                      {
+                        "value": "Contact us",
+                        "isLink": true
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "conversion.final-cta",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "headingLine1": "Payments made Natural.",
+        "headingLine2": "Start building on Natural today",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "splash": {
+          "photo": {
+            "assetRole": "photo.splash",
+            "src": "/assets/images/brand/nature-desk.jpg",
+            "alt": "Natural",
+            "generationMode": "reuse-existing"
+          },
+          "opacity": 0.1
+        }
+      },
+      "variant": "default"
+    },
+    {
+      "type": "section",
+      "section": "chrome.footer",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {}
+    }
+  ]
+}

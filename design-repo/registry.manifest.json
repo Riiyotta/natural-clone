@@ -1,0 +1,67 @@
+{
+  "$schema-note": "The design-repo's own registry. Every number in `counts` is RECOMPUTED from the files it summarises by extraction/verify_all.py \u2014 none of it is hand-maintained.",
+  "repositoryId": "natural-design-repo",
+  "repositoryName": "Natural marketing-site design repo",
+  "repositoryVersion": "1.0.0",
+  "pageSpecVersion": "1.0.0",
+  "allowlistVersion": "1.0.0",
+  "schemaVersion": "draft-07",
+  "versionFieldNote": "`allowlistVersion` is MACHINE-CHECKED: extraction/verify_all.py fails the run if it drifts from tokens/llm/component-allowlist.json's own version field. `repositoryVersion` and `pageSpecVersion` are DOCUMENTATION-ONLY, hand-maintained markers \u2014 nothing checks them automatically. Do not read them as an enforcement guarantee. See tokens/llm/token-policy.json for the full enforced-vs-convention split.",
+  "status": "design-review-pending",
+  "productionApproved": false,
+  "publicationPolicy": {
+    "doNotPublish": true,
+    "reason": "The source is a REAL, LIVE company's website (natural.com). The copy is transcribed verbatim and public/assets/ holds real downloaded brand assets. This repo must not be published, open-sourced, or made a public repository. See assets/asset-roles.json globalProhibitions."
+  },
+  "defaultTheme": "light",
+  "schemaValidatedThemes": [
+    "light"
+  ],
+  "themeNote": "The source site ships exactly one theme \u2014 no prefers-color-scheme rule, no dark: variant, no [data-theme] selector anywhere in src/ (verified by grep).",
+  "sourceProject": {
+    "name": "Natural (natural.com clone)",
+    "framework": "React 19 + Vite 8 + Tailwind CSS v3 + react-router-dom v7",
+    "linter": "oxlint",
+    "isGitRepository": false,
+    "locationNote": "The source tree sits as a sibling of this folder. Its path is deliberately NOT recorded \u2014 an absolute local path would break the moment this repo is extracted elsewhere.",
+    "citationsLiveIn": "extraction/measured-values.json"
+  },
+  "counts": {
+    "tokenFiles": 15,
+    "tokenValues": 326,
+    "primitives": 7,
+    "components": 9,
+    "sections": 24,
+    "templates": 6,
+    "routes": 16,
+    "assetRoles": 15,
+    "compatibilityRules": 16,
+    "controlFixtures": 7
+  },
+  "entryPoints": {
+    "$note": "Only files INSIDE design-repo/. No `../` paths. An entry point is a promise about THIS package's own contents, so a zipped or standalone copy must not reference files it does not contain. Build-time evidence citations live in extraction/measured-values.json instead, which degrades gracefully (warn, not fail) when no sibling source tree is present.",
+    "readFirst": "README.md",
+    "generatorContract": "schema/pagespec.schema.json",
+    "generatorExample": "schema/example.pagespec.json",
+    "generatorAllowlist": "tokens/llm/component-allowlist.json",
+    "generatorTokenCatalog": "tokens/llm/token-catalog.json",
+    "enforcementPolicy": "tokens/llm/token-policy.json",
+    "complianceRules": "assets/asset-roles.json",
+    "semanticValidator": "schema/semantic_validate.py",
+    "adversarialSuite": "schema/tests/adversarial_test.py",
+    "verifyAll": "extraction/verify_all.py",
+    "templates": "templates/templates.json",
+    "routes": "templates/routes.json",
+    "compatibilityGraph": "compatibility/graph.json",
+    "citationLedger": "extraction/measured-values.json",
+    "theme": "tokens/themes/light.json",
+    "changelog": "CHANGELOG.md"
+  },
+  "verification": {
+    "$note": "Run extraction/verify_all.py to reproduce all of this. Never trust these flags without re-running it.",
+    "schemaValidation": "schema/tests/adversarial_test.py (control half)",
+    "adversarialSuite": "schema/tests/adversarial_test.py (mutation half)",
+    "selfContainment": "copy design-repo/ to an empty temp dir with no siblings and re-run every script there",
+    "zipCleanliness": "unzip -l design-repo.zip | grep -ic \"__MACOSX\\|\\.DS_Store\" must print 0"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "conversion.final-cta",
+  "category": "conversion",
+  "name": "Final CTA + brand splash",
+  "purpose": "The site's closing conversion moment: a centered two-line heading, a CTA pair, and the full-bleed textured brand splash beneath it. Appears on 14 of the 16 routes.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "headingLine1": { "type": "string", "maxWords": 4 },
+      "headingLine2": { "type": "string", "maxWords": 7 },
+      "primaryCta":   { "$ref": "primitives/button.pill-primary" },
+      "secondaryCta": { "$ref": "primitives/button.pill-ghost" },
+      "splash":       { "$ref": "components/splash-texture-stack" }
+    },
+    "required": ["headingLine1", "headingLine2", "primaryCta", "secondaryCta", "splash"]
+  },
+  "constraints": { "onePerPage": true, "maxPerPage": 1, "mustPrecedeFooter": true, "mustBeLastContentSection": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "paddingY": "space.120", "minHeight": "none (content-driven, ~372px)", "splashHeight": "400px floor" }, "desktop": { "paddingY": "space.80", "minHeight": "532px", "splashHeight": "44.4vw" } },
+  "variants": {
+    "default": { "paddingY": "space.120 mobile / space.80 desktop" },
+    "careers": { "paddingY": "240px top / 120px bottom mobile; 240px both desktop", "note": "A real, measured per-route override (652px tall on /careers vs 532px elsewhere), applied via a wrapper class so the shared component stays untouched.", "measuredFrom": "src/index.css:536-550" }
+  },
+  "measuredFrom": "src/components/FinalCta.jsx:27-84"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "content.team-roster",
+  "category": "content",
+  "name": "Team roster",
+  "purpose": "A dense 3-column list of every team member, each row an indexed name + title linking out. The /about 'Team' section.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "eyebrow": { "type": "string", "maxWords": 3 },
+      "heading": { "type": "string", "maxWords": 12 },
+      "people": {
+        "type": "array", "minItems": 3, "maxItems": 40,
+        "items": {
+          "additionalProperties": false,
+          "properties": { "name": { "type": "string", "maxWords": 4 }, "title": { "type": "string", "maxWords": 6 }, "href": { "type": "string" } },
+          "required": ["name", "title", "href"]
+        }
+      }
+    },
+    "required": ["eyebrow", "heading", "people"]
+  },
+  "constraints": { "maxPerPage": 1, "mustNotBeFirst": true, "mustNotBeLast": true },
+  "motion": { "allowed": ["none"], "reducedMotionFallback": "none" },
+  "responsive": { "mobile": { "columns": 1, "rowGap": "space.40" }, "desktop": { "columns": 3, "rowGap": "space.80" } },
+  "structuralNote": "Each row is a 56px-tall link with the name and a zero-padded index (001, 002...) on the top line and the title plus a 10px arrow on the bottom line. The index is derived from position, not authored.",
+  "assetPolicy": "This section carries NO portraits — it is text only. Do not add employee photographs to it.",
+  "measuredFrom": "src/pages/About.jsx:322-357"
+}

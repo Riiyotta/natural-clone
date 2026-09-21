@@ -1,0 +1,11 @@
+{
+  "id": "icon-grid",
+  "layer": "component",
+  "name": "Product icon grid",
+  "purpose": "A 4x2 grid of product glyphs on a #fafafa panel, used as the third Home benefit card's visual.",
+  "content": { "icons": { "type": "array", "minItems": 8, "maxItems": 8, "required": true, "assetRole": "icon.product" } },
+  "style": { "panelHeight": "240px", "tile": "60px", "gap": "2px 3px", "glyph": "space.24", "radius": "radius.md", "background": "surface.cardVisual" },
+  "observedIcons": ["bank-account", "wallet", "shield", "people", "deposit", "withdraw", "card", "agent"],
+  "accessibility": { "ariaHidden": true },
+  "measuredFrom": "src/components/BenefitsSpeed.jsx:56-85"
+}

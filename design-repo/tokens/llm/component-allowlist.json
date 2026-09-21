@@ -1,0 +1,127 @@
+{
+  "$description": "The closed set an AI generator may instantiate and override. This is a CURATED VIEW, not the whole token system: hand a generator this file, not tokens/00-foundation/*. Ids here are cross-checked against the real contract files and against schema/pagespec.schema.json by extraction/verify_all.py \u2014 a phantom entry or an orphaned contract fails the run.",
+  "version": "1.0.0",
+  "sections": [
+    "chrome.footer",
+    "chrome.navbar",
+    "content.blog-teaser",
+    "content.card-grid",
+    "content.numbered-principles",
+    "content.perks-grid",
+    "content.post-index",
+    "content.pricing-table",
+    "content.splash-story",
+    "content.split-feature",
+    "content.team-quote-row",
+    "content.team-roster",
+    "conversion.contact-form",
+    "conversion.final-cta",
+    "conversion.newsletter",
+    "conversion.open-roles",
+    "hero.blog-featured",
+    "hero.centered-statement",
+    "hero.left-statement",
+    "hero.product",
+    "hero.scroll-dashboard",
+    "interactive.code-explorer",
+    "interactive.tab-stage",
+    "social.investor-wall"
+  ],
+  "primitives": [
+    "button.ghost-nav",
+    "button.pill-ghost",
+    "button.pill-primary",
+    "eyebrow",
+    "filter-tabs",
+    "form-field",
+    "icon.arrow-forward"
+  ],
+  "components": [
+    "card.agent-profile",
+    "card.investor-quote",
+    "card.marketing",
+    "card.team-quote",
+    "icon-grid",
+    "numbered-list-row",
+    "splash-texture-stack",
+    "stat-chart",
+    "terminal-block"
+  ],
+  "assetRoles": [
+    "brand.wordmark",
+    "decor.logo-placeholder",
+    "icon.product",
+    "icon.verified",
+    "logo.partner",
+    "photo.blog-hero",
+    "photo.feature-graphic",
+    "photo.hero-product",
+    "photo.section-graphic",
+    "photo.splash",
+    "photo.trust-badge",
+    "portrait.agent",
+    "portrait.owner",
+    "portrait.team",
+    "texture.overlay"
+  ],
+  "templates": [
+    "commerce.pricing",
+    "company.narrative",
+    "form.single",
+    "home.landing",
+    "index.posts",
+    "product.feature"
+  ],
+  "settableNodeProperties": {
+    "$note": "Derived from schema/pagespec.schema.json's definitions, not hand-copied.",
+    "node": [
+      "content",
+      "motion",
+      "section",
+      "type",
+      "variant"
+    ],
+    "motion": [
+      "delayMs",
+      "durationMs",
+      "easing",
+      "pattern",
+      "reducedMotionFallback"
+    ],
+    "assetRef": [
+      "alt",
+      "assetRole",
+      "generationMode",
+      "src"
+    ]
+  },
+  "overridePolicy": {
+    "mayOverride": [
+      "node.variant (only to a value the template declares)",
+      "node.motion.durationMs / delayMs / easing (within the declared enums)",
+      "every field inside node.content that the section contract declares"
+    ],
+    "mayNotOverride": [
+      "any token value (colors, sizes, spacing, radii) \u2014 reference a semantic role instead",
+      "the section id enum",
+      "the template enum",
+      "the route enum",
+      "the assetRole enum",
+      "node.motion.reducedMotionFallback (const-locked per section)",
+      "chrome.navbar / chrome.footer content (both are empty by contract)"
+    ],
+    "mayNotAdd": [
+      "new sections",
+      "new templates",
+      "new routes",
+      "new asset roles",
+      "new motion patterns",
+      "new theme ids (the site has exactly one theme)"
+    ]
+  },
+  "complianceGate": {
+    "$note": "Compliance constraints an allowlist alone cannot express live in assets/asset-roles.json globalProhibitions and are ENFORCED by schema/semantic_validate.py's NO_FABRICATED_BRAND_ASSETS check. Read them before generating anything.",
+    "sourceIsRealCompany": true,
+    "doNotPublish": true
+  }
+}

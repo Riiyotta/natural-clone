@@ -1,0 +1,135 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "route": "/wallet",
+  "basedOnTemplate": "product.feature",
+  "title": "Wallets",
+  "description": "The /wallet product route, the canonical instance of the product.feature template that serves 10 of this site's 16 routes.",
+  "theme": "light",
+  "nodes": [
+    {
+      "type": "section",
+      "section": "chrome.navbar",
+      "motion": {
+        "pattern": "entrance-stagger",
+        "reducedMotionFallback": "none",
+        "durationMs": 400,
+        "delayMs": 1000,
+        "easing": "ease-out"
+      },
+      "content": {}
+    },
+    {
+      "type": "section",
+      "section": "hero.product",
+      "motion": {
+        "pattern": "entrance-fade-up",
+        "reducedMotionFallback": "none",
+        "durationMs": 500,
+        "delayMs": 250,
+        "easing": "ease-out"
+      },
+      "content": {
+        "heading": "Wallets",
+        "body": "Store funds in FDIC-insured wallets for your agent to use. Create a single wallet or spin up multiple to manage finances. All from one unified API.",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "heroAsset": {
+          "assetRole": "photo.hero-product",
+          "src": "/assets/images/products/wallets-hero.jpg",
+          "alt": "Wallets",
+          "generationMode": "reuse-existing"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.card-grid",
+      "variant": "asset-visuals",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Accounts",
+        "heading": "Accounts built for agents",
+        "cards": [
+          {
+            "title": "Multiple wallets",
+            "body": "Use one wallet for all your agents, or one for each. You decide.",
+            "visual": {
+              "assetRole": "photo.feature-graphic",
+              "src": "/assets/images/products/wallet-graphic-multiple.jpg",
+              "alt": "Multiple wallets",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "Expanded FDIC insurance",
+            "body": "All Natural accounts receive expanded FDIC coverage.",
+            "visual": {
+              "assetRole": "photo.trust-badge",
+              "src": "/assets/images/benefits/fdic-card.jpg",
+              "alt": "Expanded FDIC insurance",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "Fully programmable",
+            "body": "Create new wallets on top of Natural entirely programmatically.",
+            "visual": {
+              "assetRole": "photo.feature-graphic",
+              "src": "/assets/images/products/wallet-graphic-programmable.jpg",
+              "alt": "Fully programmable",
+              "generationMode": "reuse-existing"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "conversion.final-cta",
+      "variant": "default",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "headingLine1": "Payments made Natural.",
+        "headingLine2": "Start building on Natural today",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "splash": {
+          "photo": {
+            "assetRole": "photo.splash",
+            "src": "/assets/images/brand/nature-desk.jpg",
+            "alt": "Natural",
+            "generationMode": "reuse-existing"
+          },
+          "opacity": 0.1
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "chrome.footer",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {}
+    }
+  ]
+}

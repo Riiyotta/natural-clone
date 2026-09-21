@@ -1,0 +1,463 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "route": "/",
+  "basedOnTemplate": "home.landing",
+  "title": "Natural",
+  "description": "The homepage: the scroll-scrubbed dashboard hero and the full marketing narrative.",
+  "theme": "light",
+  "nodes": [
+    {
+      "type": "section",
+      "section": "chrome.navbar",
+      "motion": {
+        "pattern": "entrance-stagger",
+        "reducedMotionFallback": "none",
+        "durationMs": 400,
+        "delayMs": 1000,
+        "easing": "ease-out"
+      },
+      "content": {}
+    },
+    {
+      "type": "section",
+      "section": "hero.scroll-dashboard",
+      "motion": {
+        "pattern": "scroll-scrub-reveal",
+        "reducedMotionFallback": "static-inline",
+        "durationMs": 500,
+        "delayMs": 1000,
+        "easing": "linear"
+      },
+      "content": {
+        "newsTagLabel": "Our $30M Series A",
+        "newsTagDate": "July 20",
+        "newsTagHref": "/blog/natural-series-a",
+        "headingLead": "Natural powers agentic payments.",
+        "headingMuted": "Wallets. Payments. Cards. Processing. Billing. Voice. All of the primitives agents need*",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "dashboardAsset": {
+          "assetRole": "photo.hero-product",
+          "src": "/assets/images/products/hero-dashboard.jpg",
+          "alt": "Natural dashboard",
+          "generationMode": "reuse-existing"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.card-grid",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Benefits",
+        "heading": "Move at agent speed",
+        "cards": [
+          {
+            "title": "Agent-first primitives",
+            "body": "All of Natural's APIs are designed for and used by agents.",
+            "visual": {
+              "component": "terminal-block",
+              "variant": "chat"
+            }
+          },
+          {
+            "title": "Observable and traceable",
+            "body": "We thread every payment with full agent observability so you're in control.",
+            "visual": {
+              "assetRole": "portrait.agent",
+              "src": "/assets/images/agents/penny-avatar.jpg",
+              "alt": "Penny agent",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "One unified API",
+            "body": "Start with one flow, or launch a full payment platform. All with one API.",
+            "visual": {
+              "component": "icon-grid"
+            }
+          }
+        ]
+      },
+      "variant": "generated-visuals"
+    },
+    {
+      "type": "section",
+      "section": "interactive.tab-stage",
+      "motion": {
+        "pattern": "opacity-crossfade",
+        "reducedMotionFallback": "instant-swap",
+        "durationMs": 300,
+        "easing": "ease-out"
+      },
+      "content": {
+        "eyebrow": "Flows",
+        "heading": "Natural powers every type of agentic payments workflow",
+        "backgroundAsset": {
+          "assetRole": "photo.section-graphic",
+          "src": "/assets/images/products/flows-background.jpg",
+          "alt": "",
+          "generationMode": "reuse-existing"
+        },
+        "tabs": [
+          {
+            "label": "Hold accounts & funds",
+            "body": "Open FDIC-insured accounts agents can hold, receive, & send funds from.",
+            "image": {
+              "assetRole": "photo.section-graphic",
+              "src": "/assets/images/products/flows-hold.jpg",
+              "alt": "Hold accounts & funds",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "label": "Move money & transfers",
+            "body": "Power agentic transfers between agents, businesses, and consumers.",
+            "image": {
+              "assetRole": "photo.section-graphic",
+              "src": "/assets/images/products/flows-move.jpg",
+              "alt": "Move money & transfers",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "label": "Accept & make payments",
+            "body": "Have agents collect card or bank payments via voice or links.",
+            "image": {
+              "assetRole": "photo.section-graphic",
+              "src": "/assets/images/products/flows-accept.jpg",
+              "alt": "Accept & make payments",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "label": "Issue cards & credit",
+            "body": "Give agents access to cards & credit so they can spend autonomously.",
+            "image": {
+              "assetRole": "photo.section-graphic",
+              "src": "/assets/images/products/flows-issue.jpg",
+              "alt": "Issue cards & credit",
+              "generationMode": "reuse-existing"
+            }
+          }
+        ],
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.split-feature",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Control",
+        "heading": "Identity, observability, and managed disputes",
+        "bullets": [
+          "Agents always have stable identities",
+          "All IDs tie back to a verifiable legal identity",
+          "Natural mediates all disputes for you",
+          "You have full auditability on agent actions"
+        ],
+        "primaryCta": {
+          "label": "Learn more",
+          "href": "/identity"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "stageCard": {
+          "agentName": "Penny",
+          "agentHandle": "@gabby-penny",
+          "agentId": "agt...a81225",
+          "ownerName": "Gabby Smith",
+          "verified": true,
+          "portrait": {
+            "assetRole": "portrait.agent",
+            "src": "/assets/images/agents/penny-avatar.jpg",
+            "alt": "",
+            "generationMode": "reuse-existing"
+          },
+          "ownerAvatar": {
+            "assetRole": "portrait.owner",
+            "src": "/assets/images/home/control-owner-avatar.png",
+            "alt": "",
+            "generationMode": "reuse-existing"
+          }
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "interactive.code-explorer",
+      "motion": {
+        "pattern": "opacity-crossfade",
+        "reducedMotionFallback": "instant-swap",
+        "durationMs": 100,
+        "easing": "ease-out"
+      },
+      "content": {
+        "eyebrow": "Developers",
+        "heading": "Start moving money via MCP, CLI, SDK, or API",
+        "backgroundAsset": {
+          "assetRole": "photo.section-graphic",
+          "src": "/assets/images/home/developers-background.png",
+          "alt": "",
+          "generationMode": "reuse-existing"
+        },
+        "tabs": [
+          {
+            "label": "Claude Code",
+            "command": "claude mcp add --transport http natural"
+          },
+          {
+            "label": "Codex",
+            "command": "codex mcp add natural --url https://mcp.natural.com"
+          },
+          {
+            "label": "SDK",
+            "command": "npm install @naturalpay/sdk"
+          },
+          {
+            "label": "CLI",
+            "command": "curl -fsSL https://natural.com/install.sh | bash"
+          }
+        ],
+        "primaryCta": {
+          "label": "Read docs",
+          "href": "https://docs.natural.com"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.card-grid",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Benefits",
+        "heading": "Scale with confidence",
+        "cards": [
+          {
+            "title": "FDIC-insured up to $200M",
+            "body": "All Natural accounts receive expanded FDIC coverage.",
+            "visual": {
+              "assetRole": "photo.trust-badge",
+              "src": "/assets/images/benefits/fdic-card.jpg",
+              "alt": "FDIC coverage",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "Scale to billions of dollars",
+            "body": "Natural can scale with you as your business grows.",
+            "visual": {
+              "component": "stat-chart",
+              "variant": "volumeBars"
+            }
+          },
+          {
+            "title": "99.99% uptime",
+            "body": "We take performance seriously so you can focus on building.",
+            "visual": {
+              "component": "stat-chart",
+              "variant": "uptimeBars"
+            }
+          }
+        ]
+      },
+      "variant": "generated-visuals"
+    },
+    {
+      "type": "section",
+      "section": "social.investor-wall",
+      "motion": {
+        "pattern": "filter-collapse",
+        "reducedMotionFallback": "instant-hide",
+        "durationMs": 150,
+        "easing": "ease-out"
+      },
+      "content": {
+        "eyebrow": "Investors",
+        "heading": "Backed by the best investors and operators in fintech",
+        "filters": {
+          "options": [
+            "All",
+            "Firms",
+            "Individuals"
+          ],
+          "selected": "All"
+        },
+        "cards": [
+          {
+            "quote": "For the power of agents to be fully realized they need to be able to access payments infra. Natural makes that happen.",
+            "name": "Immad Akhund",
+            "title": "CEO, Mercury",
+            "tint": "#5266eb",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Natural is an elegant solution to one of the most obvious problems with agents: they can't pay for things.",
+            "name": "Pete Koomen",
+            "title": "GP, Y Combinator",
+            "tint": "#ff6600",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Agentic payments will dwarf human-initiated payments within a decade. Natural is pioneering this frontier.",
+            "name": "Zach Abrams",
+            "title": "CEO, Bridge",
+            "tint": "#030712",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Natural has the team, the vision and the execution to harness the massive opportunity in agentic payments.",
+            "name": "Michael Tannenbaum",
+            "title": "CEO, Figure",
+            "tint": "#5b56f5",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "Regulation will evolve, but the shift toward agentic payments is inevitable and Natural is the clear leader.",
+            "name": "Art Levy",
+            "title": "CBO, Brex",
+            "tint": "#00070a",
+            "onLightTint": true,
+            "wide": false
+          },
+          {
+            "quote": "I invested in Natural because I believe agents will require a radical rethink of the infrastructure services of the internet.",
+            "name": "Guillermo Rauch",
+            "title": "CEO, Vercel",
+            "tint": "#000000",
+            "onLightTint": true,
+            "wide": false
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.blog-teaser",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Blog",
+        "heading": "Agentic payments, revisited",
+        "featured": {
+          "href": "/blog/agentic-payments-revisited",
+          "image": {
+            "assetRole": "photo.blog-hero",
+            "src": "/assets/images/blog/agentic-payments-revisited/agentic-payments-revisited-hero.jpg",
+            "alt": "Agentic payments, revisited",
+            "generationMode": "reuse-existing"
+          }
+        },
+        "posts": [
+          {
+            "title": "Unapologetically non-normal",
+            "date": "September 14",
+            "href": "/blog/why-jerry-joined-natural",
+            "image": {
+              "assetRole": "photo.blog-hero",
+              "src": "/assets/images/blog/why-jerry-joined-natural/jerry-blog-hero.jpg",
+              "alt": "",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "Something out of nothing",
+            "date": "August 31",
+            "href": "/blog/why-david-joined-natural",
+            "image": {
+              "assetRole": "photo.blog-hero",
+              "src": "/assets/images/blog/why-david-joined-natural/david-blog-hero.jpg",
+              "alt": "",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "title": "Rational actors",
+            "date": "August 24",
+            "href": "/blog/why-kishan-joined-natural",
+            "image": {
+              "assetRole": "photo.blog-hero",
+              "src": "/assets/images/blog/why-kishan-joined-natural/kishan-blog-hero.jpg",
+              "alt": "",
+              "generationMode": "reuse-existing"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "conversion.final-cta",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "headingLine1": "Payments made Natural.",
+        "headingLine2": "Start building on Natural today",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "splash": {
+          "photo": {
+            "assetRole": "photo.splash",
+            "src": "/assets/images/brand/nature-desk.jpg",
+            "alt": "Natural",
+            "generationMode": "reuse-existing"
+          },
+          "opacity": 0.1
+        }
+      },
+      "variant": "default"
+    },
+    {
+      "type": "section",
+      "section": "chrome.footer",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {}
+    }
+  ]
+}

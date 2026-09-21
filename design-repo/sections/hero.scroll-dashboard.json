@@ -1,0 +1,34 @@
+{
+  "id": "hero.scroll-dashboard",
+  "category": "hero",
+  "name": "Scroll-scrubbed dashboard hero",
+  "purpose": "The homepage's signature moment: a pinned hero whose dashboard screenshot grows from a 48px box to a full window as the user scrolls. Drive the brand's core claim before any product detail.",
+  "content": {
+    "additionalProperties": false,
+    "properties": {
+      "newsTagLabel":  { "type": "string", "maxWords": 4 },
+      "newsTagDate":   { "type": "string", "maxWords": 3 },
+      "newsTagHref":   { "type": "string" },
+      "headingLead":   { "type": "string", "maxWords": 6, "note": "the solid-colored first span" },
+      "headingMuted":  { "type": "string", "maxWords": 20, "note": "the text.tertiary tail span" },
+      "primaryCta":    { "$ref": "primitives/button.pill-primary" },
+      "secondaryCta":  { "$ref": "primitives/button.pill-ghost" },
+      "dashboardAsset":{ "type": "assetRef", "assetRole": "photo.hero-product" }
+    },
+    "required": ["newsTagLabel", "newsTagDate", "newsTagHref", "headingLead", "headingMuted", "primaryCta", "secondaryCta", "dashboardAsset"]
+  },
+  "constraints": { "onePerPage": true, "mustBeFirst": true, "maxPerPage": 1, "homeRouteOnly": true },
+  "motion": {
+    "allowed": ["scroll-scrub-reveal"],
+    "reducedMotionFallback": "static-inline",
+    "detail": "progress = clamp(scrollY / (heroHeight - viewportHeight), 0, 1), a plain LINEAR ramp with no easing, written to --progress. The clip reads it: width calc(48px + 1152px * p), height calc(48px + 592px * p), radius calc(1.5px + .5px * p). The inner image only fades in at the very end: opacity clamp(0, (p - 0.95) * 20, 1). Entrance stagger: news tag 0ms, h1 500ms, actions 750ms, clip 1000ms.",
+    "reducedMotionDetail": "The pin is dropped entirely (position:relative, height:auto) and the dashboard renders inline at full width. The clip is also excluded from the hero's exit animation, because it is the scrubbed element and must stay visible throughout."
+  },
+  "responsive": {
+    "mobile": { "scrollScrubActive": false, "note": "The hero fills exactly one screen, so the scroll range is zero, --progress never advances, and the clip stays a 48x48 box. This is real live behaviour, not a degradation." },
+    "desktop": { "scrollScrubActive": true }
+  },
+  "geometryRef": "tokens/30-layout/layout.json#heroGeometry",
+  "geometryWarning": "All hero sizing is VIEWPORT-RELATIVE (100vh-based). CLONE_SPEC.md:186's flat '820px tall' claim is false at every viewport height except 900. Do not encode a pixel height here.",
+  "measuredFrom": "src/components/Hero.jsx:64-129, src/index.css:234-426"
+}

@@ -1,0 +1,413 @@
+{
+  "pageSpecVersion": "1.0.0",
+  "route": "/careers",
+  "basedOnTemplate": "company.narrative",
+  "title": "Careers",
+  "description": "The /careers route: the company-narrative shape's OTHER arm \u2014 team quote row, perks grid and open-roles board, closing on the careers CTA variant.",
+  "theme": "light",
+  "nodes": [
+    {
+      "type": "section",
+      "section": "chrome.navbar",
+      "motion": {
+        "pattern": "entrance-stagger",
+        "reducedMotionFallback": "none",
+        "durationMs": 400,
+        "delayMs": 1000,
+        "easing": "ease-out"
+      },
+      "content": {}
+    },
+    {
+      "type": "section",
+      "section": "hero.centered-statement",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "heading": "We\u2019re designers, engineers, and craftspeople",
+        "primaryCta": {
+          "label": "Jump to open roles",
+          "href": "#open-roles"
+        }
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.splash-story",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "splash": {
+          "photo": {
+            "assetRole": "photo.splash",
+            "src": "/assets/images/team/team-image.jpg",
+            "alt": "The Natural team working together outdoors",
+            "generationMode": "reuse-existing"
+          },
+          "opacity": 0.25
+        },
+        "paragraphs": [
+          "We're making it easy for agents to transact. We imagine a world where payments between humans and agents are indistinguishable.",
+          "Our team so far is 20 people. We're all based in San Francisco with many of us having moved from New York and Los Angeles.",
+          "We believe the only way a high-performance culture wins is if people commit toward a shared mission. We're not in this to be runner-up, we're in it to be the best and that's it."
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.numbered-principles",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Values",
+        "heading": "Anchored in strong beliefs and principles",
+        "items": [
+          {
+            "number": "1",
+            "headline": "We're playing to win",
+            "description": "We're not in this to be runner-up, we're playing to win. We treat our company like a sports team, not a family."
+          },
+          {
+            "number": "2",
+            "headline": "Slope and intellect over everything",
+            "description": "You\u2019re smart, learn quickly, and care deeply about your work. We hire people who want to be the best at what they do."
+          },
+          {
+            "number": "3",
+            "headline": "Every detail matters",
+            "description": "Everything from API design to email signatures to divider weight matters. An unintentional decision is a poor one."
+          },
+          {
+            "number": "4",
+            "headline": "In-person, in-office culture",
+            "description": "Speed and team cohesion lead to success. We're in-person, in-office, in San Francisco, six days per week."
+          },
+          {
+            "number": "5",
+            "headline": "No ego, the right ideas prevail",
+            "description": "It's not about seniority or protecting ego. We debate openly and push towards intellectual truth."
+          },
+          {
+            "number": "6",
+            "headline": "Do the best work of your career",
+            "description": "You should be excited to put your name on your work. This should be the best work you've ever done."
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.team-quote-row",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Team",
+        "heading": "The team shaping the future of payments",
+        "cards": [
+          {
+            "name": "Kishan Sripada",
+            "role": "Software Engineer",
+            "quote": "Economics assumes we're rational actors, which we're not. But now we get to build them\u2014and get back to making decisions that matter.",
+            "footer": "Kishan joins Natural from Orange Slice",
+            "photo": {
+              "assetRole": "portrait.team",
+              "src": "/assets/images/blog/why-kishan-joined-natural/kishan-blog-hero.jpg",
+              "alt": "Kishan Sripada",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "name": "Bhargav Yadavalli",
+            "role": "Founding Engineer",
+            "quote": "In truth, a place like Natural embraces someone who takes pride in precision and constantly sharpens their skills. Natural embraces the craftsman.",
+            "footer": "Bhargav joins Natural from Method",
+            "photo": {
+              "assetRole": "portrait.team",
+              "src": "/assets/images/blog/why-bhargav-joined-natural/bhargav-blog-hero.jpg",
+              "alt": "Bhargav Yadavalli",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "name": "Devan Patel",
+            "role": "Founding Designer",
+            "quote": "This is the team I want to be on at this point in my career. And this is the company I will do my life's work at.",
+            "footer": "Devan joins Natural from Method",
+            "photo": {
+              "assetRole": "portrait.team",
+              "src": "/assets/images/blog/why-devan-joined-natural/devan-blog-hero.jpg",
+              "alt": "Devan Patel",
+              "generationMode": "reuse-existing"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "content.perks-grid",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "eyebrow": "Perks",
+        "heading": "The only startup that treats you like an athlete",
+        "intro": "Performance is at the heart of our culture, which is why we've designed some of the most performance and wellness focused company benefits you'll find anywhere.",
+        "partners": [
+          {
+            "name": "Equinox Destination",
+            "logo": {
+              "assetRole": "logo.partner",
+              "src": "/images/careers/equinox-logo.png",
+              "alt": "Equinox Destination",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "name": "Whoop 5.0 Band",
+            "logo": {
+              "assetRole": "logo.partner",
+              "src": "/images/careers/whoop-logo.svg",
+              "alt": "Whoop 5.0 Band",
+              "generationMode": "reuse-existing"
+            }
+          },
+          {
+            "name": "Eight Sleep Pod 5",
+            "logo": {
+              "assetRole": "logo.partner",
+              "src": "/images/careers/eight-sleep-logo.svg",
+              "alt": "Eight Sleep Pod 5",
+              "generationMode": "reuse-existing"
+            }
+          }
+        ],
+        "perks": [
+          {
+            "title": "Blood testing",
+            "subtitle": "From Superpower"
+          },
+          {
+            "title": "Lunch & dinner",
+            "subtitle": "Covered in the office"
+          },
+          {
+            "title": "Transportation",
+            "subtitle": "$415/month"
+          },
+          {
+            "title": "Competitive comp",
+            "subtitle": "90th+ percentile"
+          },
+          {
+            "title": "401K + match",
+            "subtitle": "4% of your contributions"
+          },
+          {
+            "title": "Flexible exercise",
+            "subtitle": "Early & extended"
+          },
+          {
+            "title": "Relocation benefits",
+            "subtitle": "We'll help you move"
+          },
+          {
+            "title": "Best gear",
+            "subtitle": "M4 Max, Studio Display, etc."
+          },
+          {
+            "title": "Full insurance coverage",
+            "subtitle": "Health, dental, vision"
+          },
+          {
+            "title": "Unlimited PTO",
+            "subtitle": "Recharge whenever"
+          },
+          {
+            "title": "Regular team retreats",
+            "subtitle": "Yosemite, Santa Ynez, etc."
+          },
+          {
+            "title": "Beautiful office",
+            "subtitle": "Lots of Natural light"
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "conversion.open-roles",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "heading": "Open Roles",
+        "departments": [
+          {
+            "department": "Engineering",
+            "roles": [
+              {
+                "title": "Product Engineer",
+                "subtitle": "General",
+                "href": "/careers/product-engineer"
+              },
+              {
+                "title": "Product Engineer",
+                "subtitle": "Agent Identity & Observability",
+                "href": "/careers/product-engineer-agent-identity-observability"
+              },
+              {
+                "title": "Product Engineer",
+                "subtitle": "Risk & Credit",
+                "href": "/careers/product-engineer-risk-credit"
+              },
+              {
+                "title": "Data Engineer",
+                "href": "/careers/data-engineer"
+              },
+              {
+                "title": "Design Engineer",
+                "href": "/careers/design-engineer"
+              },
+              {
+                "title": "Infrastructure Engineer",
+                "href": "/careers/infrastructure-engineer"
+              },
+              {
+                "title": "Core Payments Engineer",
+                "href": "/careers/core-payments-engineer"
+              },
+              {
+                "title": "Developer Relations Engineer",
+                "href": "/careers/developer-relations-engineer"
+              }
+            ]
+          },
+          {
+            "department": "Design",
+            "roles": [
+              {
+                "title": "Product Designer",
+                "subtitle": "General",
+                "href": "/careers/product-designer"
+              },
+              {
+                "title": "Product Designer",
+                "subtitle": "Agents",
+                "href": "/careers/product-designer-agents"
+              }
+            ]
+          },
+          {
+            "department": "Marketing",
+            "roles": [
+              {
+                "title": "Agent Marketer",
+                "href": "/careers/agent-marketer"
+              },
+              {
+                "title": "Content Lead",
+                "subtitle": "Video",
+                "href": "/careers/content-lead-video"
+              }
+            ]
+          },
+          {
+            "department": "GTM",
+            "roles": [
+              {
+                "title": "Founding GTM",
+                "subtitle": "Startups",
+                "href": "/careers/founding-gtm-startups"
+              },
+              {
+                "title": "Founding GTM",
+                "subtitle": "Strategic Partnerships",
+                "href": "/careers/founding-gtm-strategic-partnerships"
+              }
+            ]
+          },
+          {
+            "department": "Operations",
+            "roles": [
+              {
+                "title": "AML Operations",
+                "href": "/careers/aml-operations"
+              },
+              {
+                "title": "Head of Finance",
+                "href": "/careers/head-of-finance"
+              },
+              {
+                "title": "Founding Recruiter",
+                "href": "/careers/founding-recruiter"
+              },
+              {
+                "title": "Executive Assistant",
+                "href": "/careers/executive-assistant"
+              }
+            ]
+          },
+          {
+            "department": "Other",
+            "roles": [
+              {
+                "title": "Open Application",
+                "href": "/careers/open-application"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "type": "section",
+      "section": "conversion.final-cta",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {
+        "headingLine1": "Payments made Natural.",
+        "headingLine2": "Start building on Natural today",
+        "primaryCta": {
+          "label": "Sign up for free",
+          "href": "/signup"
+        },
+        "secondaryCta": {
+          "label": "Talk to the team",
+          "href": "/contact"
+        },
+        "splash": {
+          "photo": {
+            "assetRole": "photo.splash",
+            "src": "/assets/images/brand/nature-desk.jpg",
+            "alt": "Natural",
+            "generationMode": "reuse-existing"
+          },
+          "opacity": 0.1
+        }
+      },
+      "variant": "careers"
+    },
+    {
+      "type": "section",
+      "section": "chrome.footer",
+      "motion": {
+        "pattern": "none",
+        "reducedMotionFallback": "none"
+      },
+      "content": {}
+    }
+  ]
+}

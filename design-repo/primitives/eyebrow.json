@@ -1,0 +1,11 @@
+{
+  "id": "eyebrow",
+  "layer": "primitive",
+  "name": "Section eyebrow",
+  "purpose": "A one-or-two-word category label sitting 12px above a section h2. It is the site's only section-labelling device.",
+  "props": { "text": { "type": "string", "required": true, "maxWords": 3 } },
+  "style": { "type": "type.eyebrow", "color": "text.secondary", "textTransform": "none", "letterSpacing": "normal", "marginBottom": "space.12" },
+  "constraints": ["Never uppercase. Never letter-spaced. src/index.css:90 records this as an explicit correction against an earlier uppercase assumption."],
+  "observedValues": ["Benefits", "Flows", "Control", "Developers", "Investors", "Blog", "Opportunity", "Team", "Values", "Perks", "Accounts", "Money movement", "Developer & billing", "Features"],
+  "measuredFrom": "src/index.css:90-98"
+}

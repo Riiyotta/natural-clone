@@ -1,0 +1,108 @@
+{
+  "$description": "Component-scoped overrides: values that belong to exactly one component and would be wrong to promote into the semantic layer.",
+  "button.pill": {
+    "radius": "radius.pill",
+    "paddingX": "space.16",
+    "paddingY": "space.6",
+    "gap": "space.12",
+    "fontSize": "size.15",
+    "lineHeight": "leading.24",
+    "transition": "background-color 0.1s ease-out",
+    "measuredFrom": "src/components/FinalCta.jsx:47"
+  },
+  "card.marketing": {
+    "radius": "radius.md",
+    "padding": "space.20",
+    "gap": "space.20",
+    "border": "border.card",
+    "desktopHeight": "400px",
+    "visualHeight": "240px",
+    "measuredFrom": "src/components/BenefitsSpeed.jsx:117"
+  },
+  "card.investor": {
+    "widthFund": "560px",
+    "widthAngel": "360px",
+    "widthMobile": "335px",
+    "padding": "80px 40px 40px",
+    "innerGap": "122px",
+    "quoteHeight": "96px",
+    "quoteLineClamp": 4,
+    "quoteLineClampMobile": 5,
+    "radius": "radius.sm",
+    "measuredFrom": "src/index.css:213-232, src/components/Investors.jsx:76-98"
+  },
+  "card.control": {
+    "width": "min(440px, calc(100vw - 104px))",
+    "radius": "14px",
+    "padding": "space.24",
+    "gap": "space.40",
+    "border": "border.field",
+    "innerPanelRadius": "radius.xl",
+    "innerPanelPadding": "space.20",
+    "thumbnail": "160px",
+    "editButtonCircle": "space.36",
+    "measuredFrom": "src/components/Control.jsx:96-143"
+  },
+  "stage.control": {
+    "background": "surface.panel",
+    "radius": "radius.md",
+    "desktopWidth": "604px",
+    "desktopMinHeight": "560px",
+    "desktopPadding": "space.24",
+    "mobileMinHeight": "480px",
+    "mobilePadding": "40px 20px",
+    "mobileOrder": -1,
+    "measuredFrom": "src/index.css:453-473"
+  },
+  "panel.textControl": { "desktopWidth": "556px", "measuredFrom": "src/index.css:481-484" },
+  "navbar": {
+    "height": "80px",
+    "innerHeight": "40px",
+    "containerMaxWidth": "1200px",
+    "leftGap": "108px",
+    "submenuBackground": "surface.panel",
+    "submenuRadius": "0",
+    "submenuShadow": "none",
+    "submenuHeights": { "Products": "552px", "Features": "272px", "Company": "272px" },
+    "submenuTransition": "opacity .15s ease-out, visibility .15s ease-out, transform .15s ease-out, height .25s ease-out",
+    "submenuLinkNameColumn": "160px",
+    "measuredFrom": "src/index.css:566-639, src/components/Navbar.jsx:52"
+  },
+  "terminal": {
+    "titlebarBackground": "surface.panel",
+    "titlebarPadding": "space.12 space.20",
+    "dotSize": "space.12",
+    "dotGap": "space.6",
+    "dotColor": "color.gray.500",
+    "bodyFontSize": "size.15",
+    "bodyLineHeight": "leading.24",
+    "promptGlyphFont": "font.mono",
+    "promptGlyphSize": "size.12",
+    "measuredFrom": "src/components/BenefitsSpeed.jsx:11-33"
+  },
+  "heroDashboard": {
+    "$description": "The scroll-scrubbed hero. All sizing is viewport-relative — see tokens/30-layout/layout.json for the full corrected rule set and the CLONE_SPEC.md disagreement it resolves.",
+    "clipCollapsed": "48px",
+    "clipExpandedWidth": "1200px",
+    "clipExpandedHeight": "640px",
+    "clipWidthFormula": "calc(48px + 1152px * var(--progress))",
+    "clipHeightFormula": "calc(48px + 592px * var(--progress))",
+    "clipRadiusFormula": "calc(1.5px + 0.5px * var(--progress))",
+    "innerImageSize": "1160px x 600px",
+    "innerImageOpacityFormula": "clamp(0, (var(--progress) - 0.95) * 20, 1)",
+    "measuredFrom": "src/index.css:292-303, src/index.css:367-379"
+  },
+  "splash": {
+    "height": "44.4vw",
+    "minHeight": "400px",
+    "textureLayers": [
+      { "asset": "paper.jpg", "blend": "multiply" },
+      { "asset": "print-medium.jpg", "blend": "overlay" },
+      { "asset": "scan.jpg", "blend": "screen" },
+      { "asset": "grain.jpg", "blend": "soft-light" }
+    ],
+    "opacityFinalCta": 0.1,
+    "opacityMidPage": 0.25,
+    "measuredFrom": "src/components/FinalCta.jsx:20-25, src/components/FinalCta.jsx:61-81, src/pages/About.jsx:244-252"
+  }
+}

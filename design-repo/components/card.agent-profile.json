@@ -1,0 +1,25 @@
+{
+  "id": "card.agent-profile",
+  "layer": "component",
+  "name": "Agent profile card",
+  "purpose": "The single hero prop of the Home 'Control' section — a nested card showing a fictional agent identity, its verified badge, its ID and its human owner.",
+  "content": {
+    "agentName":  { "type": "string", "required": true, "maxWords": 2 },
+    "agentHandle":{ "type": "string", "required": true, "maxWords": 1 },
+    "agentId":    { "type": "string", "required": true, "maxWords": 1, "note": "a truncated fictional id, e.g. 'agt...a81225'" },
+    "ownerName":  { "type": "string", "required": true, "maxWords": 3 },
+    "verified":   { "type": "boolean", "required": true }
+  },
+  "style": {
+    "width": "min(440px, calc(100vw - 104px))", "radius": "14px", "padding": "space.24", "gap": "space.40",
+    "border": "border.field", "shadow": "shadow.none",
+    "innerPanel": { "radius": "radius.xl", "padding": "space.20", "border": "border.field" },
+    "thumbnail": "160px", "editCircle": "space.36",
+    "nameType": { "size": "size.20", "leading": "leading.28" },
+    "rowType": "type.bodySmall", "idType": "type.mono",
+    "verifiedColor": "accent.verified"
+  },
+  "structuralNote": "Two nested bordered cards, not one flat panel — the outer card wraps a second bordered profile panel. There is NO box-shadow and NO small circular avatar beside the name; the photo is a single 160px square thumbnail.",
+  "assetPolicy": "The agent portrait and the owner avatar are real downloaded brand assets (`portrait.agent`, `portrait.owner` roles) and are must-not-fabricate: a generated page may reference them but must not invent a lookalike of a real person.",
+  "measuredFrom": "src/components/Control.jsx:96-166"
+}

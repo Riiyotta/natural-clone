@@ -1,0 +1,23 @@
+{
+  "id": "card.investor-quote",
+  "layer": "component",
+  "name": "Investor quote card",
+  "purpose": "A tinted, full-bleed quote tile in the horizontally-scrolling 'wall of love'. The tint is the investor's own brand color and the text flips light/dark against it.",
+  "content": {
+    "quote": { "type": "string", "required": true, "maxWords": 55, "note": "Rendered into a fixed 96px box with -webkit-line-clamp 4 (5 on mobile), so overlong quotes are visually truncated rather than growing the card." },
+    "name":  { "type": "string", "required": true, "maxWords": 5 },
+    "title": { "type": "string", "required": true, "maxWords": 5 },
+    "tint":  { "type": "color", "required": true },
+    "onLightTint": { "type": "boolean", "required": true, "note": "true when the tint is dark and the text must be white" },
+    "wide":  { "type": "boolean", "required": true, "note": "true = a 560px 'fund' card, false = a 360px 'angel' card" }
+  },
+  "style": {
+    "padding": "80px 40px 40px", "gap": "122px", "radius": "radius.sm",
+    "quoteHeight": "96px", "logoMark": "icon.32",
+    "textLight": "rgba(255,255,255,0.92)", "subLight": "rgba(255,255,255,0.6)",
+    "textDark": "text.primary", "subDark": "text.secondary"
+  },
+  "responsive": { "mobile": { "width": "335px", "padding": "space.32", "gap": "space.80", "quoteHeight": "120px", "lineClamp": 5 }, "desktop": { "width": "560px (wide) / 360px (narrow)" } },
+  "assetPolicy": "The logo mark is a GENERIC placeholder glyph (a circle + plus), deliberately NOT the investor's real logo. See assets/asset-roles.json role `decor.logo-placeholder`. A generated page must not substitute a real firm's mark.",
+  "measuredFrom": "src/components/Investors.jsx:60-112, src/index.css:206-232"
+}
